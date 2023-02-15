@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.firtinadannotlar.com
+
+# Sitemaps
+Sitemap: https://www.firtinadannotlar.com/sitemap.xml
