@@ -126,3 +126,31 @@ export const generateDynamicPosts = (category: string) => {
     return { paths: [], fallback: false };
   }
 };
+
+const projectsPath = (_path?: string) =>
+  path.join(process.cwd(), "public", "projects", _path || "");
+
+const parseProjectMdx = async (fileName: string) => {
+  const markdownWithMeta = fs.readFileSync(projectsPath(fileName), "utf-8");
+  const { content } = matter(markdownWithMeta);
+  const mdxSource = await serialize(content);
+
+  return {
+    props: {
+      mdxSource,
+    },
+  };
+};
+
+export const getProjects = async () => {
+  const projectsFolder = fs.readdirSync(projectsPath());
+
+  const allProjects: any = [];
+
+  for (let i = 0; i < projectsFolder.length; i++) {
+    const parsedFile = await parseProjectMdx(projectsFolder[i]);
+    allProjects.push(parsedFile);
+  }
+
+  return allProjects;
+};

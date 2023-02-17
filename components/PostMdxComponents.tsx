@@ -3,12 +3,12 @@ import Image from "next/image";
 // text-[44px] leading-[1.1] font-normal
 export const PostMdxComponents = {
   Image: (props: any) => (
-    <div className="bg-[#1B1D1F] h-[250px] md:h-[500px] !my-10 relative">
+    <div className="!my-10 relative md:w-full md:h-[300px]">
       <Image alt="sample photo" {...props} fill className="!mt-0 !mb-0" />
     </div>
   ),
   Title: (props: any) => (
-    <h1 className="text-black !mb-4 md:!mb-6 text-[44px] leading-[1.1] font-normal md:text-6xl md:font-extrabold">
+    <h1 className="text-white !mb-4 md:!mb-6 text-3xl leading-[1.1] font-normal md:text-2xl md:font-normal">
       {props.text}
     </h1>
   ),

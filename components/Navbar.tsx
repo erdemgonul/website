@@ -3,7 +3,6 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Icon from "public/svg/computer-solid.svg";
 
 const NavLink = ({ link, name, active }) => (
   <li>
@@ -12,7 +11,7 @@ const NavLink = ({ link, name, active }) => (
       className={classNames(
         "nav-animation lowercase font-bold tracking-wider text-2xl self-center flex",
         {
-          "text-red-500": active,
+          "text-indigo-400 border-b border-indigo-400 px-2": active,
           "text-white": !active,
         }
       )}
@@ -50,9 +49,9 @@ export default function Navbar() {
   }, [router.pathname]);
 
   return (
-    <nav className="flex w-full mx-auto z-50 absolute  top-0 h-[100px]">
-      <div className="hidden md:flex px-5 mx-auto  items-center  w-full max-w-screen-xl">
-        <ul className="flex items-center w-full justify-center gap-x-8">
+    <nav className="flex w-full   h-[100px] bg-black">
+      <div className="hidden md:flex mx-auto  items-center  w-full max-w-screen-xl px-20 2xl:px-0">
+        <ul className="flex items-center w-full justify-end gap-x-8">
           <NavLink
             link="/blog"
             name="Blog"

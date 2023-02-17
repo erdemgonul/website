@@ -1,19 +1,28 @@
+import Link from "next/link";
 import ScrollButton from "../ScrollButton";
 
 const PortfolioSection = () => (
-  <section
-    className="main-page flex flex-col h-screen relative"
-    data-color="#86efac"
-  >
+  <section className="home-section">
     <div className="max-w-screen-xl  absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center">
-        <h3 className="text-white text-2xl leading-[1.5] font-light">
-          Hey there! I'm a front-end developer based in Istanbul, and I
-          absolutely love what I do. I studied Computer Science at Ozyegin
-          University. I have a passion for web and mobile. I love diving into
-          complex projects and finding innovative solutions. I'm always up for a
-          challenge! 🎉
-        </h3>
+        <Link
+          href="/projects"
+          className="text-white text-2xl leading-[1.5] font-light hover:text-indigo-400"
+        >
+          - I have developed many side projects and freelance jobs so far.{" "}
+          <span className="underline underline-offset-8">
+            Click to view my portfolio
+          </span>
+        </Link>
+        <a
+          href="https://www.github.com/erdemgonul"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-8 text-white text-2xl leading-[1.5] font-light hover:text-indigo-400"
+        >
+          - You can also check my{" "}
+          <span className="underline underline-offset-8">Github profile.</span>
+        </a>
       </div>
     </div>
     <ScrollButton nextSection="Contact" />

@@ -2,11 +2,8 @@ import ScrollButton from "../ScrollButton";
 import Linkedin from "public/svg/linkedin.svg";
 
 const ExperienceSection = () => (
-  <section
-    className="main-page flex flex-col h-screen relative"
-    data-color="#86efac"
-  >
-    <div className="max-w-screen-xl  absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
+  <section className="home-section">
+    <div className="max-w-screen-xl md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-3xl mt-20 mb-12 ">Experience</h1>

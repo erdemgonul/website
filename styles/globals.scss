@@ -215,7 +215,7 @@ a {
 
 .nav-animation {
   transition: 0.2s ease-in;
-  @apply hover:text-red-500;
+  @apply hover:text-red-500 hover:border-red-500;
 }
 
 .red-animation {
@@ -250,7 +250,7 @@ svg {
 }
 
 .homepage {
-  @apply w-full px-20 bg-black snap-y snap-mandatory h-screen overflow-y-scroll;
+  @apply w-full  bg-black snap-y snap-mandatory h-[calc(100vh-100px)] overflow-y-scroll;
 
   &::-webkit-scrollbar {
     width: 0px;
@@ -260,4 +260,12 @@ svg {
   section {
     scroll-snap-align: center;
   }
+}
+
+.portfolio {
+  @apply w-full px-20 bg-black min-h-[calc(100vh-100px)];
+}
+
+.home-section {
+  @apply flex flex-col h-full relative;
 }

@@ -5,9 +5,7 @@ import Linkedin from "public/svg/linkedin.svg";
 import Twitter from "public/svg/twitter.svg";
 import Message from "public/svg/message.svg";
 import Medium from "public/svg/medium.svg";
-import ArrowDown from "public/svg/arrow-down-solid.svg";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 const SOCIAL_LINKS = [
   {
@@ -29,48 +27,29 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Layout({ children }) {
-  const rightBar = useRef<any>(null);
-
-  useEffect(() => {
-    if (rightBar?.current) {
-      //@ts-ignore
-      const sections = [...document.querySelectorAll("section")];
-
-      window.addEventListener("scroll", function () {
-        for (let i = 0; i < sections.length; i++) {
-          const section = sections[i];
-          if (
-            section.getBoundingClientRect().top - 100 <=
-            document.body.scrollTop
-          ) {
-            console.log({ section });
-
-            rightBar.current.style.background = section.dataset.color;
-          }
-        }
-      });
-    }
-  }, [rightBar?.current]);
-
   return (
     <>
-      <Navbar />
-
-      <div className="flex w-full">
-        <div className="flex  w-[calc(100vw-200px)]">{children}</div>
-        <div
-          ref={rightBar}
-          className="rightbar fixed right-0 w-[200px] h-screen transition-all duration-[400ms] indigo-bg"
-        >
-          <div className="absolute left-0 right-0 bottom-[100px] self-center items-center  md:space-y-4 flex flex-col ">
+      <div className="flex">
+        <div className="flex flex-col">
+          <Navbar />
+          <div className="flex w-full md:w-[calc(100vw-200px)]">{children}</div>
+        </div>
+        <div className="hidden md:block rightbar fixed top-0 right-0 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] indigo-bg">
+          <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
             {SOCIAL_LINKS.map(({ link, Icon }) => (
-              <Link href={link} target="_blank" rel="noreferrer noopener">
+              <Link
+                key={link}
+                href={link}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <Icon fill="#151515" width={48} height={48} />
               </Link>
             ))}
           </div>
         </div>
       </div>
+
       {/* <Footer /> */}
     </>
   );
