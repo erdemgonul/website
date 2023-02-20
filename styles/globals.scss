@@ -263,19 +263,32 @@ svg {
 }
 
 .portfolio {
-  @apply w-full px-20 bg-black min-h-[calc(100vh-100px)];
+  @apply w-full px-20 bg-black min-h-[calc(100vh-100px)] h-[calc(100vh-100px)];
+
+  .portfolio-body {
+    @apply min-h-[calc(100vh-228px)] w-full snap-y snap-mandatory h-[calc(100vh-228px)] overflow-y-scroll flex flex-col ml-2 list-disc list-inside items-start;
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    section {
+      scroll-snap-align: center;
+
+      height: calc(100vh - 228px);
+      min-height: calc(100vh - 228px);
+
+      p {
+        @apply text-xl text-slate-200 ml-16 mt-6;
+      }
+
+      img {
+        @apply ml-16;
+      }
+    }
+  }
 }
 
 .home-section {
   @apply flex flex-col h-full relative;
-}
-
-.portfolio-item {
-  p {
-    @apply text-xl text-slate-200 ml-16 mt-6;
-  }
-
-  img {
-    @apply ml-16;
-  }
 }

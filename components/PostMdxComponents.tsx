@@ -1,10 +1,20 @@
+import classNames from "classnames";
 import Image from "next/image";
 
-// text-[44px] leading-[1.1] font-normal
 export const PostMdxComponents = {
   Image: (props: any) => (
-    <div className="!my-10 relative md:w-full md:h-[300px]">
-      <Image alt="sample photo" {...props} fill className="!mt-0 !mb-0" />
+    <div
+      className={classNames("my-16 w-1/2", {
+        "md:!w-1/4": props.mobile,
+      })}
+    >
+      <img
+        alt="sample photo"
+        {...props}
+        style={{ objectFit: "contain" }}
+        className="!mt-0 !mb-0"
+        lazy
+      />
     </div>
   ),
   Title: (props: any) => (
