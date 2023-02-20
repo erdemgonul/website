@@ -269,3 +269,13 @@ svg {
 .home-section {
   @apply flex flex-col h-full relative;
 }
+
+.portfolio-item {
+  p {
+    @apply text-xl text-slate-200 ml-16 mt-6;
+  }
+
+  img {
+    @apply ml-16;
+  }
+}

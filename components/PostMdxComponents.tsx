@@ -8,9 +8,12 @@ export const PostMdxComponents = {
     </div>
   ),
   Title: (props: any) => (
-    <h1 className="text-white !mb-4 md:!mb-6 text-3xl leading-[1.1] font-normal md:text-2xl md:font-normal">
-      {props.text}
-    </h1>
+    <div className="flex items-center">
+      <div className="w-8 h-1 bg-indigo-400 rounded-full shrink-0 mr-8"></div>
+      <h1 className="text-white   text-3xl font-normal md:text-3xl md:font-normal">
+        {props.text}
+      </h1>
+    </div>
   ),
   Date: (props: any) => (
     <h5 className="text-slate-500 font-light text-sm tracking-widest mb-6">

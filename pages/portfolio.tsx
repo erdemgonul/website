@@ -18,12 +18,26 @@ export default function Portfolio({ projects }) {
       </Head>
       <div className="portfolio h-full flex flex-col">
         <div className=" max-w-screen-xl w-full h-full flex flex-col mx-auto">
-          <h1 className="my-32 text-white font-bold text-5xl">My Portfolio</h1>
-          {(projects || []).map(({ props }) => (
-            <div className="flex flex-col h-full justify-center  mx-auto text-white font-bold">
-              <MDXRemote {...props.mdxSource} components={PostMdxComponents} />
-            </div>
-          ))}
+          <h1 className="mt-12 mb-32 text-white font-bold text-5xl">
+            My Portfolio
+          </h1>
+          <ul className="flex flex-col gap-y-4 ml-2 list-disc list-inside flex-wrap">
+            {(projects || []).map(({ props }, i) => (
+              <li
+                className={
+                  "portfolio-item ml-8 flex  text-white text-sm font-bold md:w-1/2 mt-4 self-start"
+                }
+                key={i}
+              >
+                <div className="flex flex-col">
+                  <MDXRemote
+                    {...props.mdxSource}
+                    components={PostMdxComponents}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>
