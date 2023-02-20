@@ -3,7 +3,7 @@ import Linkedin from "public/svg/linkedin.svg";
 
 const ExperienceSection = () => (
   <section className="home-section">
-    <div className="max-w-screen-xl md:flex md:flex-col md:mx-auto h-full">
+    <div className="max-w-screen-sm md:max-w-screen-lg 2xl:max-w-screen-xl  md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-3xl mt-20 mb-12 ">Experience</h1>
@@ -13,7 +13,7 @@ const ExperienceSection = () => (
             rel="noreferrer"
             className="text-white text-xl mt-20 mb-12 "
           >
-            <Linkedin width={40} height={40} fill="white" />
+            <Linkedin width={40} height={40} fill="#0E76A8" />
           </a>
         </div>
         <ul className=" text-white text-2xl space-y-8 ml-8">

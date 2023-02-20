@@ -16,13 +16,13 @@ export default function Portfolio({ projects }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="portfolio h-full flex flex-col">
+      <div className="portfolio h-full flex flex-col pt-[150px]">
         <div className=" max-w-screen-xl w-full h-full flex flex-col mx-auto">
           <h1 className="mt-12 mb-8 text-white font-bold text-5xl">
             My Portfolio
           </h1>
           <ul className="portfolio-body">
-            {(projects || []).map(({ props }, i) => (
+            {(projects || []).map(({ props }, i: number) => (
               <section
                 className={
                   "portfolio-item ml-2 flex flex-col text-white text-sm font-bold justify-center"

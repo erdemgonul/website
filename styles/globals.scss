@@ -13,7 +13,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: white;
+  @apply bg-black;
 }
 
 ::selection {
@@ -250,23 +250,22 @@ svg {
 }
 
 .homepage {
-  @apply w-full  bg-black snap-y snap-mandatory h-[calc(100vh-100px)] overflow-y-scroll;
-
-  &::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-  }
+  @apply bg-black snap-y snap-mandatory h-screen  overflow-y-scroll  mx-auto w-full;
 
   section {
     scroll-snap-align: center;
+    @apply flex flex-col h-[calc(100vh)] relative 2xl:px-32 mx-32;
+  }
+
+  &::-webkit-scrollbar {
   }
 }
 
 .portfolio {
-  @apply w-full px-20 bg-black min-h-[calc(100vh-100px)] h-[calc(100vh-100px)];
+  @apply w-full px-20 bg-black;
 
   .portfolio-body {
-    @apply min-h-[calc(100vh-228px)] w-full snap-y snap-mandatory h-[calc(100vh-228px)] overflow-y-scroll flex flex-col ml-2 list-disc list-inside items-start;
+    @apply w-full snap-y snap-mandatory overflow-y-scroll flex flex-col ml-2 list-disc list-inside items-start;
     &::-webkit-scrollbar {
       width: 0px;
       background: transparent;
@@ -287,8 +286,4 @@ svg {
       }
     }
   }
-}
-
-.home-section {
-  @apply flex flex-col h-full relative;
 }

@@ -29,23 +29,29 @@ const SOCIAL_LINKS = [
 export default function Layout({ children }) {
   return (
     <>
-      <div className="flex">
-        <div className="flex flex-col">
-          <Navbar />
-          <div className="flex w-full md:w-[calc(100vw-200px)]">{children}</div>
+      <div className="flex  w-full h-full">
+        <div className="hidden lg:block rightbar fixed left-0 top-0 z-[100] w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] indigo-bg">
+          <div className="relative w-full h-full">
+            <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
+              {SOCIAL_LINKS.map(({ link, Icon }) => (
+                <Link
+                  key={link}
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Icon fill="#151515" width={48} height={48} />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="hidden md:block rightbar fixed top-0 right-0 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] indigo-bg">
-          <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
-            {SOCIAL_LINKS.map(({ link, Icon }) => (
-              <Link
-                key={link}
-                href={link}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <Icon fill="#151515" width={48} height={48} />
-              </Link>
-            ))}
+        <div className="absolute lg:left-[200px] h-full w-full">
+          <div className="relative flex flex-col w-full">
+            <Navbar />
+            <div className="flex w-full lg:w-[calc(100vw-200px)] absolute">
+              {children}
+            </div>
           </div>
         </div>
       </div>

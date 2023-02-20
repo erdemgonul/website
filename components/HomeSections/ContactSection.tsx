@@ -25,7 +25,7 @@ const SOCIAL_LINKS = [
 ];
 const ContactSection = () => (
   <section className="home-section">
-    <div className="max-w-screen-xl  absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
+    <div className="max-w-screen-sm md:max-w-screen-lg 2xl:max-w-screen-xl   absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center items-center">
         <div className="flex gap-x-10 items-center justify-center">
           {SOCIAL_LINKS.map(({ link, Icon }) => (
