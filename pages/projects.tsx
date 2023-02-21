@@ -17,15 +17,15 @@ export default function Portfolio({ projects }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="portfolio h-full flex flex-col pt-[150px]">
-        <div className=" max-w-screen-xl w-full h-full flex flex-col mx-auto">
-          <h1 className="mt-12 mb-8 text-white font-bold text-5xl">
-            My Portfolio
+        <div className="max-w-screen-xl w-full h-full flex flex-col mx-auto">
+          <h1 className="mb-20 text-white font-light border-b border-gray-300 pb-4 px-4 text-4xl">
+            {"Projects"}
           </h1>
           <ul className="portfolio-body">
             {(projects || []).map(({ props }, i: number) => (
               <section
                 className={
-                  "portfolio-item ml-2 flex flex-col text-white text-sm font-bold justify-center"
+                  "ml-8 portfolio-item flex flex-col text-white text-sm font-bold justify-center cursor-pointer hover:opacity-[0.3]"
                 }
                 key={i}
               >

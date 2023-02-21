@@ -59,27 +59,19 @@ export default function Navbar() {
             key="/blog"
           />
           <NavLink
-            link="/portfolio"
-            name="Portfolio"
-            active={currentRoute === "/portfolio"}
-            key="/portfolio"
+            link="/projects"
+            name="Projects"
+            active={currentRoute === "/projects"}
+            key="/projects"
           />
-          {/* <Link href={"/"} className="px-8 cursor-pointer">
-            <Icon
-              width={60}
-              height={60}
-              fill="#818cf8"
-              className="svg-animation"
-            />
-          </Link> */}
           <NavLink
-            link="/about"
+            link="/#about"
             name="About Me"
             active={currentRoute === "/about"}
             key="/about"
           />
           <NavLink
-            link="/contact"
+            link="/#contact"
             name="Contact"
             active={currentRoute === "/contact"}
             key="/contact"

@@ -2,28 +2,35 @@ import classNames from "classnames";
 import Image from "next/image";
 
 export const PostMdxComponents = {
-  Image: (props: any) => (
-    <div
-      className={classNames("my-16 w-1/2", {
-        "md:!w-1/4": props.mobile,
-      })}
-    >
-      <img
-        alt="sample photo"
-        {...props}
-        style={{ objectFit: "contain" }}
-        className="!mt-0 !mb-0"
-        lazy
-      />
-    </div>
-  ),
+  Image: ({ mobile, ...props }) => {
+    return (
+      <div></div>
+      // <div
+      //   className={classNames("my-16 w-1/2", {
+      //     "md:!w-1/4": !!props.mobile,
+      //   })}
+      // >
+      //   <img
+      //     alt="sample photo"
+      //     {...props}
+      //     style={{ objectFit: "contain" }}
+      //     className="!mt-0 !mb-0"
+      //   />
+      // </div>
+    );
+  },
   Title: (props: any) => (
     <div className="flex items-center">
-      <div className="w-8 h-1 bg-indigo-400 rounded-full shrink-0 mr-8"></div>
-      <h1 className="text-white   text-3xl font-normal md:text-3xl md:font-normal">
+      <div className="w-2 h-2 bg-white rounded-full shrink-0 mr-8"></div>
+      <h1 className="text-white   text-3xl font-normal md:text-2xl md:font-light">
         {props.text}
       </h1>
     </div>
+  ),
+  Text: (props: any) => (
+    <p className="mt-4 text-gray-400  ml-10 text-xl font-normal md:text-lg md:font-light">
+      {props.text}
+    </p>
   ),
   Date: (props: any) => (
     <h5 className="text-slate-500 font-light text-sm tracking-widest mb-6">

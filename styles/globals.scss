@@ -237,18 +237,6 @@ svg {
   background-color: #818cf8;
 }
 
-.darkSkyBlue {
-  background-color: #86efac;
-}
-
-.aquamarine {
-  background-color: #ff7e71;
-}
-
-.electricBlue {
-  background-color: #ffb25f;
-}
-
 .homepage {
   @apply bg-black snap-y snap-mandatory h-screen  overflow-y-scroll  mx-auto w-full;
 
@@ -265,25 +253,13 @@ svg {
   @apply w-full px-20 bg-black;
 
   .portfolio-body {
-    @apply w-full snap-y snap-mandatory overflow-y-scroll flex flex-col ml-2 list-disc list-inside items-start;
+    @apply mt-12 w-full snap-y snap-mandatory overflow-y-scroll flex flex-col ml-2 list-disc list-inside items-start gap-y-12;
     &::-webkit-scrollbar {
       width: 0px;
       background: transparent;
     }
 
     section {
-      scroll-snap-align: center;
-
-      height: calc(100vh - 228px);
-      min-height: calc(100vh - 228px);
-
-      p {
-        @apply text-xl text-slate-200 ml-16 mt-6;
-      }
-
-      img {
-        @apply ml-16;
-      }
     }
   }
 }

@@ -2,7 +2,7 @@ import ScrollButton from "../ScrollButton";
 import Linkedin from "public/svg/linkedin.svg";
 
 const ExperienceSection = () => (
-  <section className="home-section">
+  <section className="home-section" id="experience">
     <div className="max-w-screen-sm md:max-w-screen-lg 2xl:max-w-screen-xl  md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center">
         <div className="flex justify-between items-center">
