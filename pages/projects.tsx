@@ -14,10 +14,10 @@ export default function Portfolio({ projects }) {
   return (
     <>
       <Head>
-        <title>Portfolio | Erdem Gönül</title>
+        <title>Projects | Erdem Gönül</title>
         <meta
           name="description"
-          content="Hayatımızdaki fırtınalar beynimizdeki her şeyi götürse de bunlar kalsın dediğimiz düşünceler. Filmler, tiyatrolar, müzikler ve ilginç olduğunu sandığımız fikirlerimiz..."
+          content="browse my latest projects and discover my expertise in creating engaging and responsive user interfaces that leave a lasting impression."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -29,7 +29,6 @@ export default function Portfolio({ projects }) {
           </h1>
           <ul className="portfolio-body">
             {(projects || []).map(({ props }, i: number) => {
-              console.log(props);
               if (props.image) {
                 return (
                   <div
