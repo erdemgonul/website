@@ -128,7 +128,7 @@ export const generateDynamicPosts = (category: string) => {
 };
 
 const projectsPath = (_path?: string) =>
-  path.join(process.cwd(), "public", "projects", _path || "");
+  path.join(process.cwd(), "projects", _path || "");
 
 const parseProjectMdx = async (fileName: string) => {
   const markdownWithMeta = fs.readFileSync(projectsPath(fileName), "utf-8");
