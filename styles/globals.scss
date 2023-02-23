@@ -60,7 +60,7 @@ button:hover {
   right: 0px;
   width: 0px;
   height: 0px;
-  background-color: white;
+  @apply bg-black;
   z-index: 40;
   transition: 1s;
   overflow: hidden;
@@ -241,11 +241,32 @@ svg {
   @apply bg-black snap-y snap-mandatory h-screen  overflow-y-scroll  mx-auto w-full;
 
   section {
-    scroll-snap-align: center;
-    @apply flex flex-col h-[calc(100vh)] relative 2xl:px-32 mx-32;
+    scroll-snap-align: start;
+    @apply flex flex-col h-[calc(100vh)] relative 2xl:px-32 md:mx-32 mx-6;
   }
 
-  &::-webkit-scrollbar {
+  .scroll-button {
+    @apply absolute bottom-[30px] right-0 w-full;
+  }
+
+  #experience {
+    @apply h-fit md:h-screen overflow-y-auto;
+
+    .scroll-button {
+      @apply static md:absolute mt-10 md:mt-0;
+    }
+
+    .subtitle {
+      @apply text-lg md:text-2xl text-gray-500 ml-2;
+    }
+
+    .title {
+      @apply text-xl md:text-2xl;
+    }
+
+    .text {
+      @apply text-gray-400 text-sm md:text-base  font-light md:font-normal mt-4 md:mx-6;
+    }
   }
 }
 

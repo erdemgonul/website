@@ -5,7 +5,7 @@ type Props = {
 };
 
 const ScrollButton = ({ nextSection }: Props) => (
-  <div className=" absolute bottom-[30px] right-0 w-full">
+  <div className="scroll-button">
     <div className="max-w-screen-xl mx-auto w-full flex justify-center items-center gap-x-4">
       <span className="text-white text-base font-light cursor-pointer">
         {nextSection}

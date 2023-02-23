@@ -22,9 +22,9 @@ export default function Portfolio({ projects }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="portfolio h-full w-full flex flex-col pt-[130px] md:pt-[150px] mb-20">
+      <div className="portfolio h-full w-full flex flex-col pt-[100px] md:pt-[150px] mb-20">
         <div className="md:max-w-screen-xl w-full h-full flex flex-col mx-auto">
-          <h1 className="mb-12 md:mb-20 text-white font-light border-b border-gray-300 pb-4 px-4 text-2xl md:text-4xl">
+          <h1 className="mb-12 md:mb-20 text-white font-light border-b border-gray-300 pb-4 px-3 text-2xl md:text-4xl">
             Projects
           </h1>
           <ul className="portfolio-body">

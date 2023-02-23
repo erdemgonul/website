@@ -1,8 +1,14 @@
-import { CATEGORIES } from "@/constants";
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+const NAVBAR_LINKS = [
+  { link: "/blog", name: "Blog" },
+  { link: "/projects", name: "Projects" },
+  { link: "/#about", name: "About" },
+  { link: "/#contact", name: "Contact" },
+];
 
 const NavLink = ({ link, name, active }) => (
   <li>
@@ -26,10 +32,10 @@ const MobileNavLink = ({ link, mobileName, active }) => (
     <Link
       href={link}
       className={classNames(
-        "tracking-04 font-medium capitalize text-3xl text-black hover:border-primary hover:border-b-2 border-black",
+        "tracking-04 font-light capitalize text-2xl text-white hover:border-primary hover:border-b-2 border-white",
         {
           "text-primary border-primary border-b-2": active,
-          "text-black": !active,
+          "text-white": !active,
         }
       )}
     >
@@ -46,48 +52,32 @@ export default function Navbar() {
   useEffect(() => {
     showModal && setShowModal(false);
     //eslint-disable-next-line
-  }, [router.pathname]);
+  }, [router]);
 
   return (
-    <nav className="fixed right-0 left-0 md:left-[200px] top-0 flex h-[100px]  z-[10] bg-black mx-4">
+    <nav className="fixed right-0 left-0 md:left-[200px] top-0 flex h-[80px]  z-[10] bg-black mx-4">
       <div className="hidden md:flex mx-auto  items-center  w-full max-w-screen-xl px-20 2xl:px-0">
         <ul className="flex items-center w-full justify-end gap-x-8">
-          <NavLink
-            link="/blog"
-            name="Blog"
-            active={currentRoute === "/blog"}
-            key="/blog"
-          />
-          <NavLink
-            link="/projects"
-            name="Projects"
-            active={currentRoute === "/projects"}
-            key="/projects"
-          />
-          <NavLink
-            link="/#about"
-            name="About Me"
-            active={currentRoute === "/about"}
-            key="/about"
-          />
-          <NavLink
-            link="/#contact"
-            name="Contact"
-            active={currentRoute === "/contact"}
-            key="/contact"
-          />
+          {NAVBAR_LINKS.map((link) => (
+            <NavLink
+              link={link.link}
+              name={link.name}
+              active={currentRoute === link.name}
+              key={link.link}
+            />
+          ))}
         </ul>
       </div>
-      <div className="h-[100px] px-5 flex md:hidden justify-between w-full items-center z-50">
-        <Link href="/" className="tracking-04 font-normal text-2xl text-white">
+      <div className="h-[80px] px-3 flex md:hidden justify-between w-full items-center z-50">
+        <Link href="/" className="tracking-04 font-light text-xl text-white">
           {"Erdem Gönül"}
         </Link>
         <div
-          className="flex  flex-col justify-between w-[40px] h-[10px] z-20"
+          className="flex flex-col justify-between w-[30px] h-[10px] z-20"
           onClick={() => setShowModal(!showModal)}
         >
-          <div className="w-full h-[2px] bg-black"></div>
-          <div className=" w-full h-[2px] bg-black"></div>
+          <div className="w-full h-[1px] bg-white"></div>
+          <div className=" w-full h-[1px] bg-white"></div>
         </div>
       </div>
       <div
@@ -95,12 +85,13 @@ export default function Navbar() {
           open: showModal,
         })}
       >
-        <ul className="flex flex-col  gap-y-2 ml-8 justify-center  h-full">
-          {CATEGORIES.map((route) => (
+        <ul className="flex flex-col gap-y-2 ml-8 justify-center h-full">
+          {NAVBAR_LINKS.map((link) => (
             <MobileNavLink
-              {...route}
-              active={currentRoute === route.link}
-              key={route.link}
+              link={link.link}
+              mobileName={link.name}
+              active={currentRoute === link.name}
+              key={link.link}
             />
           ))}
         </ul>
