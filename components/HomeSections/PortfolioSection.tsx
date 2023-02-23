@@ -6,13 +6,13 @@ const PortfolioSection = () => (
     <div className="max-w-screen-xl  absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center">
         <Link
-          href="/portfolio"
+          href="/projects"
           className="text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           - I have developed many side projects and freelance jobs so far.{" "}
         </Link>
         <Link
-          href="/portfolio"
+          href="/projects"
           className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           -{" "}
