@@ -3,8 +3,14 @@ import Head from "next/head";
 import { getProjects } from "@/helpers/post-helpers";
 import { MDXRemote } from "next-mdx-remote";
 import { PostMdxComponents } from "@/components/PostMdxComponents";
+import Link from "next/link";
+import Modal from "@/components/Modal";
+import { useState } from "react";
 
 export default function Portfolio({ projects }) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [image, setImage] = useState();
+
   return (
     <>
       <Head>
@@ -22,22 +28,47 @@ export default function Portfolio({ projects }) {
             {"Projects"}
           </h1>
           <ul className="portfolio-body">
-            {(projects || []).map(({ props }, i: number) => (
-              <section
-                className={
-                  "ml-8 portfolio-item flex flex-col text-white text-sm font-bold justify-center cursor-pointer hover:opacity-[0.3]"
-                }
-                key={i}
-              >
-                <MDXRemote
-                  {...props.mdxSource}
-                  components={PostMdxComponents}
-                />
-              </section>
-            ))}
+            {(projects || []).map(({ props }, i: number) => {
+              console.log(props);
+              if (props.image) {
+                return (
+                  <div
+                    className="portfolio-item"
+                    key={i}
+                    onClick={() => {
+                      setImage(props.image);
+                      setModalVisible(true);
+                    }}
+                  >
+                    <MDXRemote
+                      {...props.mdxSource}
+                      components={PostMdxComponents}
+                    />
+                  </div>
+                );
+              } else {
+                return (
+                  <Link
+                    className="portfolio-item"
+                    key={i}
+                    href={props.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MDXRemote
+                      {...props.mdxSource}
+                      components={PostMdxComponents}
+                    />
+                  </Link>
+                );
+              }
+            })}
           </ul>
         </div>
       </div>
+      {modalVisible && (
+        <Modal image={image} handleCloseModal={() => setModalVisible(false)} />
+      )}
     </>
   );
 }

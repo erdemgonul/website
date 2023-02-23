@@ -259,7 +259,8 @@ svg {
       background: transparent;
     }
 
-    section {
+    .portfolio-item {
+      @apply ml-8 flex flex-col text-white text-sm font-bold justify-center cursor-pointer hover:opacity-[0.3];
     }
   }
 }

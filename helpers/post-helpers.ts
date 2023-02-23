@@ -132,12 +132,17 @@ const projectsPath = (_path?: string) =>
 
 const parseProjectMdx = async (fileName: string) => {
   const markdownWithMeta = fs.readFileSync(projectsPath(fileName), "utf-8");
-  const { content } = matter(markdownWithMeta);
+  const {
+    content,
+    data: { image, link },
+  } = matter(markdownWithMeta);
   const mdxSource = await serialize(content);
 
   return {
     props: {
       mdxSource,
+      image,
+      link,
     },
   };
 };

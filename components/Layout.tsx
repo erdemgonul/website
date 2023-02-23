@@ -30,7 +30,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className="flex  w-full h-full">
-        <div className="hidden lg:block rightbar fixed left-0 top-0 z-[100] w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] indigo-bg">
+        <div className="hidden lg:block rightbar fixed left-0 top-0 z-50 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] indigo-bg">
           <div className="relative w-full h-full">
             <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
               {SOCIAL_LINKS.map(({ link, Icon }) => (
