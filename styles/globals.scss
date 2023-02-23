@@ -250,17 +250,17 @@ svg {
 }
 
 .portfolio {
-  @apply w-full px-20 bg-black;
+  @apply w-full px-4 md:px-20 bg-black;
 
   .portfolio-body {
-    @apply mt-12 w-full snap-y snap-mandatory overflow-y-scroll flex flex-col ml-2 list-disc list-inside items-start gap-y-12;
+    @apply md:mt-12 w-full snap-y snap-mandatory overflow-y-scroll flex flex-col md:ml-2 list-disc list-inside items-start gap-y-6 md:gap-y-12;
     &::-webkit-scrollbar {
       width: 0px;
       background: transparent;
     }
 
     .portfolio-item {
-      @apply ml-8 flex flex-col text-white text-sm font-bold justify-center cursor-pointer hover:opacity-[0.3];
+      @apply ml-4 md:ml-8 flex flex-col text-white  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer hover:opacity-[0.3];
     }
   }
 }
