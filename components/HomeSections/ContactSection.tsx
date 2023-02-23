@@ -26,7 +26,13 @@ const ContactSection = () => (
   <section className="home-section" id="contact">
     <div className="max-w-screen-sm md:max-w-screen-lg 2xl:max-w-screen-xl   absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center items-center">
-        <div className="flex gap-x-6 md:gap-x-10 items-center justify-center">
+        <h3 className="md:items-start justify-center flex flex-wrap text-white  text-lg md:text-xl leading-[1.5] font-light hover:text-orange-500">
+          Contact me from
+          <span className="ml-2 underline underline-offset-8">
+            ahmeterdemgonul@gmail.com
+          </span>
+        </h3>
+        <div className="mt-20 flex gap-x-6 md:gap-x-10 items-center justify-center">
           {SOCIAL_LINKS.map(({ link, Icon }) => (
             <Link
               key={link}
@@ -34,16 +40,10 @@ const ContactSection = () => (
               target="_blank"
               rel="noreferrer noopener"
             >
-              <Icon fill="#fbbf24" width={48} height={48} />
+              <Icon fill="#f97316" width={48} height={48} />
             </Link>
           ))}
         </div>
-        <h3 className="mt-20 md:items-start justify-center flex flex-wrap text-white  text-lg md:text-xl leading-[1.5] font-light hover:text-indigo-400">
-          Contact me from
-          <span className="ml-2 underline underline-offset-8">
-            ahmeterdemgonul@gmail.com
-          </span>
-        </h3>
       </div>
     </div>
   </section>

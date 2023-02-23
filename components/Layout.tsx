@@ -1,9 +1,7 @@
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 import Github from "public/svg/github.svg";
 import Linkedin from "public/svg/linkedin.svg";
 import Twitter from "public/svg/twitter.svg";
-import Message from "public/svg/message.svg";
 import Medium from "public/svg/medium.svg";
 import Link from "next/link";
 
@@ -30,7 +28,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className="flex  w-full h-full">
-        <div className="hidden lg:block rightbar fixed left-0 top-0 z-50 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] indigo-bg">
+        <div className="hidden lg:block rightbar fixed left-0 top-0 z-50 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] bg-indigo-400">
           <div className="relative w-full h-full">
             <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
               {SOCIAL_LINKS.map(({ link, Icon }) => (

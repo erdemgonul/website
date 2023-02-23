@@ -4,18 +4,22 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const NAVBAR_LINKS = [
-  { link: "/blog", name: "Blog" },
+  { link: "https://erdemgonul.medium.com/", name: "Blog", newTab: true },
   { link: "/projects", name: "Projects" },
   { link: "/#about", name: "About" },
   { link: "/#contact", name: "Contact" },
 ];
 
-const NavLink = ({ link, name, active }) => (
+const NavLink = ({ link, name, active, newTab = false }) => (
   <li>
     <Link
       href={link}
+      {...(newTab && {
+        target: "_blank",
+        rel: "noreferrer noopener",
+      })}
       className={classNames(
-        "nav-animation lowercase font-semibold tracking-wider whitespace-nowrap text-2xl self-center flex",
+        "lowercase font-normal tracking-wider whitespace-nowrap text-2xl self-center flex link-border link-animation",
         {
           "text-indigo-400 border-b border-indigo-400 px-2": active,
           "text-white": !active,
@@ -27,7 +31,7 @@ const NavLink = ({ link, name, active }) => (
   </li>
 );
 
-const MobileNavLink = ({ link, mobileName, active }) => (
+const MobileNavLink = ({ link, mobileName, active, newTab = false }) => (
   <li>
     <Link
       href={link}
@@ -38,6 +42,10 @@ const MobileNavLink = ({ link, mobileName, active }) => (
           "text-white": !active,
         }
       )}
+      {...(newTab && {
+        target: "_blank",
+        rel: "noreferrer noopener",
+      })}
     >
       {mobileName}
     </Link>
@@ -56,14 +64,21 @@ export default function Navbar() {
 
   return (
     <nav className="fixed right-0 left-0 md:left-[200px] top-0 flex h-[80px]  z-[10] bg-black mx-4">
-      <div className="hidden md:flex mx-auto  items-center  w-full max-w-screen-xl px-20 2xl:px-0">
+      <div className="hidden md:flex mx-auto  items-center justify-between  w-full max-w-screen-xl px-20 2xl:px-0">
+        <Link
+          href={"/"}
+          className="text-white font-light text-2xl w-full items-center"
+        >
+          {currentRoute !== "/" && "> Erdem Gönül"}
+        </Link>
         <ul className="flex items-center w-full justify-end gap-x-8">
           {NAVBAR_LINKS.map((link) => (
             <NavLink
               link={link.link}
               name={link.name}
-              active={currentRoute === link.name}
+              active={currentRoute === link.link}
               key={link.link}
+              newTab={link.newTab}
             />
           ))}
         </ul>
@@ -92,6 +107,7 @@ export default function Navbar() {
               mobileName={link.name}
               active={currentRoute === link.name}
               key={link.link}
+              newTab={link.newTab}
             />
           ))}
         </ul>

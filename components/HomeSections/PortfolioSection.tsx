@@ -7,13 +7,13 @@ const PortfolioSection = () => (
       <div className="flex flex-col h-full justify-center">
         <Link
           href="/portfolio"
-          className="text-white text-base md:text-xl leading-[1.5] font-light hover:text-indigo-400"
+          className="text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           - I have developed many side projects and freelance jobs so far.{" "}
         </Link>
         <Link
           href="/portfolio"
-          className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-indigo-400"
+          className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           -{" "}
           <span className=" underline underline-offset-8">
@@ -24,14 +24,14 @@ const PortfolioSection = () => (
           href="https://www.github.com/erdemgonul"
           target="_blank"
           rel="noreferrer"
-          className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-indigo-400"
+          className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           - You can also check my{" "}
           <span className="underline underline-offset-8">Github profile.</span>
         </a>
       </div>
     </div>
-    <ScrollButton nextSection="Contact" />
+    <ScrollButton nextSection="Contact" nextSectionId="contact" />
   </section>
 );
 

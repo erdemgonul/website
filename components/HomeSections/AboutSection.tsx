@@ -13,7 +13,7 @@ const AboutSection = () => (
         </h3>
       </div>
     </div>
-    <ScrollButton nextSection="Experience" />
+    <ScrollButton nextSection="Experience" nextSectionId="experience" />
   </section>
 );
 

@@ -15,7 +15,7 @@ const ExperienceSection = () => (
             rel="noreferrer"
             className="text-white text-xl"
           >
-            <Linkedin width={40} height={40} fill="#fbbf24" />
+            <Linkedin width={40} height={40} fill="#818cf8" />
           </a>
         </div>
         <ul className=" text-white text-2xl space-y-4 md:space-y-8 md:ml-8">
@@ -75,7 +75,7 @@ const ExperienceSection = () => (
         </ul>
       </div>
     </div>
-    <ScrollButton nextSection="Portfolio" />
+    <ScrollButton nextSection="Portfolio" nextSectionId="portfolio" />
   </section>
 );
 

@@ -2,22 +2,31 @@ import ArrowDown from "public/svg/arrow-down-solid.svg";
 
 type Props = {
   nextSection: string;
+  nextSectionId?: string;
 };
 
-const ScrollButton = ({ nextSection }: Props) => (
-  <div className="scroll-button">
-    <div className="max-w-screen-xl mx-auto w-full flex justify-center items-center gap-x-4">
-      <span className="text-white text-base font-light cursor-pointer">
-        {nextSection}
-      </span>
-      <ArrowDown
-        width={32}
-        height={32}
-        fill="white"
-        className="cursor-pointer"
-      />
-    </div>
-  </div>
-);
+const ScrollButton = ({ nextSection, nextSectionId }: Props) => {
+  const handleScrollSection = () => {
+    nextSectionId &&
+      document
+        .getElementById(nextSectionId)
+        ?.scrollIntoView({ block: "end", behavior: "smooth" });
+  };
+
+  return (
+    <button className="scroll-button" onClick={handleScrollSection}>
+      <div className="max-w-screen-xl mx-auto w-full flex justify-center items-center gap-x-4 group">
+        <span className="text-white text-base font-light cursor-pointer group-hover:text-orange-500">
+          {nextSection}
+        </span>
+        <ArrowDown
+          width={32}
+          height={32}
+          className="cursor-pointer fill-white group-hover:fill-orange-500 transition-none"
+        />
+      </div>
+    </button>
+  );
+};
 
 export default ScrollButton;

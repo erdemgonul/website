@@ -17,7 +17,7 @@ body {
 }
 
 ::selection {
-  background-color: #cca69a;
+  background-color: #f97316;
 }
 
 h1 {
@@ -81,7 +81,8 @@ a {
   color: inherit;
   text-decoration: none;
   &:hover {
-    color: #ef4444;
+    color: #f97316;
+    border-color: #f97316;
   }
 }
 
@@ -91,7 +92,7 @@ a {
     display: block;
     width: 0;
     height: 1.5px;
-    background: #ef4444;
+    background: #f97316;
     transition: width 0.4s ease-in;
   }
 
@@ -100,15 +101,15 @@ a {
   }
 }
 
-.link-border {
-  &::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1.5px;
-    background: #ef4444;
-  }
-}
+// .link-border {
+//   &::after {
+//     content: "";
+//     display: block;
+//     width: 100%;
+//     height: 1.5px;
+//     background: #f97316;
+//   }
+// }
 
 .slogan {
   @apply mx-4 md:mx-0 font-bold text-5xl  md:text-9xl tracking-tighter text-white leading-[1];
@@ -215,17 +216,17 @@ a {
 
 .nav-animation {
   transition: 0.2s ease-in;
-  @apply hover:text-red-500 hover:border-red-500;
+  @apply hover:text-orange-500 hover:border-orange-500;
 }
 
 .red-animation {
   transition: 0.5s ease-in;
-  @apply hover:text-red-500;
+  @apply hover:text-orange-500;
 }
 
 .svg-animation {
   transition: 0.2s ease-in;
-  @apply hover:fill-red-500;
+  @apply hover:fill-orange-500;
 }
 
 svg {

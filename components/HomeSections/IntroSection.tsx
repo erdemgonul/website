@@ -8,7 +8,7 @@ const IntroSection = () => (
         <h1 className="sub-slogan">Frontend Developer</h1>
       </div>
     </div>
-    <ScrollButton nextSection="" />
+    <ScrollButton nextSection="" nextSectionId="about" />
   </section>
 );
 
