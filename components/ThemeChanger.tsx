@@ -1,30 +1,37 @@
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 import Moon from "public/svg/moon.svg";
 import Sun from "public/svg/sun.svg";
 
 const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   const isLight = theme === "light";
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <label className="toggle-wrapper" htmlFor="toggle">
       <div className={`toggle ${isLight ? "enabled" : "disabled"}`}>
-        <span className="hidden">
-          {isLight ? "Enable Light Mode" : "Enable Dark Mode"}
-        </span>
         <div className="icons">
-          <Sun />
-          <Moon />
+          <Sun className="sun" />
+          <Moon className="moon" />
         </div>
         <input
           id="toggle"
           name="toggle"
           type="checkbox"
-          checked={isLight}
+          defaultChecked={isLight}
           onClick={toggleTheme}
         />
       </div>

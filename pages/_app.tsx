@@ -27,7 +27,12 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router]);
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider
+      attribute="class"
+      enableSystem={false}
+      enableColorScheme={false}
+      defaultTheme="dark"
+    >
       <Layout>
         <Component {...pageProps} />
       </Layout>

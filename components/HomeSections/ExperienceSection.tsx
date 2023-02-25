@@ -15,7 +15,11 @@ const ExperienceSection = () => (
             rel="noreferrer"
             className="text-color text-xl"
           >
-            <Linkedin width={40} height={40} fill="#818cf8" />
+            <Linkedin
+              width={40}
+              height={40}
+              className="dark:fill-indigo-400 fill-blue-500"
+            />
           </a>
         </div>
         <ul className=" text-color text-2xl space-y-4 md:space-y-8 md:ml-8">

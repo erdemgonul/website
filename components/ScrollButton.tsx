@@ -22,7 +22,7 @@ const ScrollButton = ({ nextSection, nextSectionId }: Props) => {
         <ArrowDown
           width={32}
           height={32}
-          className="cursor-pointer fill-white group-hover:fill-orange-500 transition-none"
+          className="cursor-pointer dark:fill-white fill:black group-hover:fill-orange-500 transition-none"
         />
       </div>
     </button>

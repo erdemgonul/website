@@ -20,21 +20,6 @@ body {
   background-color: #f97316;
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 500;
-}
-
-h3 {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-h5 {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
 p {
   @apply font-light leading-[1.75] text-lg md:text-xl md:leading-[2];
 }
@@ -200,20 +185,6 @@ a {
   }
 }
 
-.post-item {
-  .read-story {
-    transition: all 0.8s ease;
-    @apply font-light text-xl text-primary md:text-black opacity-0;
-  }
-  &:hover {
-    opacity: 0.7;
-    .read-story {
-      opacity: 1;
-      color: #cca69a !important;
-    }
-  }
-}
-
 .nav-animation {
   transition: 0.2s ease-in;
   @apply hover:text-orange-500 hover:border-orange-500;
@@ -243,7 +214,7 @@ svg {
 }
 
 .background-color {
-  @apply bg-white dark:bg-black;
+  @apply bg-slate-50 dark:bg-black;
 }
 
 .homepage {
@@ -299,16 +270,6 @@ svg {
   width: 110px;
   display: block;
 
-  .hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-
   .toggle {
     height: 45px;
     width: 90px;
@@ -330,7 +291,7 @@ svg {
     position: absolute;
     z-index: 2;
     transform: translate(-3px, -5px);
-    transition: transform var(--transition);
+    transition: transform 0.5s ease;
   }
 
   .toggle.enabled::before {
@@ -352,7 +313,7 @@ svg {
   }
 
   .toggle .icons svg {
-    @apply dark:fill-yellow-400 fill-yellow-400;
+    @apply fill-yellow-300;
 
     height: 25px;
     width: 25px;

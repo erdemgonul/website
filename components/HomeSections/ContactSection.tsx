@@ -40,7 +40,11 @@ const ContactSection = () => (
               target="_blank"
               rel="noreferrer noopener"
             >
-              <Icon fill="#f97316" width={48} height={48} />
+              <Icon
+                className="dark:fill-indigo-400 fill-black"
+                width={48}
+                height={48}
+              />
             </Link>
           ))}
         </div>
