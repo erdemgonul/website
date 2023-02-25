@@ -41,7 +41,7 @@ const ContactSection = () => (
               rel="noreferrer noopener"
             >
               <Icon
-                className="dark:fill-indigo-400 fill-black"
+                className="dark:fill-indigo-400 fill-black dark:hover:fill-white hover:fill-black"
                 width={48}
                 height={48}
               />
