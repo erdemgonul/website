@@ -13,7 +13,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  @apply bg-black;
+  @apply background-color;
 }
 
 ::selection {
@@ -112,7 +112,7 @@ a {
 // }
 
 .slogan {
-  @apply mx-4 md:mx-0 font-bold text-5xl  md:text-9xl tracking-tighter text-white leading-[1];
+  @apply mx-4 md:mx-0 font-bold text-5xl  md:text-9xl tracking-tighter text-color leading-[1];
 
   &:hover {
     .keyword {
@@ -134,7 +134,7 @@ a {
 }
 
 .job {
-  @apply mx-4 md:mx-0 font-bold text-5xl  md:text-2xl tracking-tighter text-white leading-[1];
+  @apply mx-4 md:mx-0 font-bold text-5xl  md:text-2xl tracking-tighter text-color leading-[1];
 
   &:hover {
     .keyword {
@@ -158,9 +158,9 @@ a {
 
   .active {
     &:hover {
-      @apply bg-gray-300 text-white;
+      @apply bg-gray-300 text-color;
     }
-    @apply text-white bg-gray-800 font-light;
+    @apply text-color bg-gray-800 font-light;
   }
 
   li {
@@ -238,8 +238,16 @@ svg {
   background-color: #818cf8;
 }
 
+.text-color {
+  @apply text-black dark:text-white;
+}
+
+.background-color {
+  @apply bg-white dark:bg-black;
+}
+
 .homepage {
-  @apply bg-black snap-y snap-mandatory h-screen  overflow-y-scroll  mx-auto w-full;
+  @apply background-color snap-y snap-mandatory h-screen  overflow-y-scroll  mx-auto w-full;
 
   section {
     scroll-snap-align: start;
@@ -272,7 +280,7 @@ svg {
 }
 
 .portfolio {
-  @apply w-full px-4 md:px-20 bg-black;
+  @apply w-full px-4 md:px-20 background-color;
 
   .portfolio-body {
     @apply md:mt-12 w-full snap-y snap-mandatory overflow-y-scroll flex flex-col md:ml-2 list-disc list-inside items-start gap-y-6 md:gap-y-12;
@@ -282,7 +290,72 @@ svg {
     }
 
     .portfolio-item {
-      @apply ml-4 md:ml-8 flex flex-col text-white  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer hover:opacity-[0.3];
+      @apply ml-4 md:ml-8 flex flex-col text-color  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer hover:opacity-[0.3];
     }
+  }
+}
+
+.toggle-wrapper {
+  width: 110px;
+  display: block;
+
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .toggle {
+    height: 45px;
+    width: 90px;
+    @apply bg-indigo-300 dark:bg-indigo-300;
+    border-radius: 40px;
+    padding: 12px;
+    position: relative;
+    margin: auto; // Optional to center the toggle
+    cursor: pointer;
+  }
+
+  .toggle::before {
+    content: "";
+    display: block;
+    height: 31px;
+    width: 31px;
+    border-radius: 30px;
+    @apply dark:bg-black bg-white;
+    position: absolute;
+    z-index: 2;
+    transform: translate(-3px, -5px);
+    transition: transform var(--transition);
+  }
+
+  .toggle.enabled::before {
+    transform: translate(40px, -5px);
+  }
+
+  .toggle input {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+  }
+
+  .toggle .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0 0px;
+  }
+
+  .toggle .icons svg {
+    @apply dark:fill-yellow-400 fill-yellow-400;
+
+    height: 25px;
+    width: 25px;
+    z-index: 0;
   }
 }

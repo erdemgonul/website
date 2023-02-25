@@ -7,13 +7,13 @@ const PortfolioSection = () => (
       <div className="flex flex-col h-full justify-center">
         <Link
           href="/projects"
-          className="text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
+          className="text-color text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           - I have developed many side projects and freelance jobs so far.{" "}
         </Link>
         <Link
           href="/projects"
-          className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
+          className="mt-8 text-color text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           -{" "}
           <span className=" underline underline-offset-8">
@@ -24,7 +24,7 @@ const PortfolioSection = () => (
           href="https://www.github.com/erdemgonul"
           target="_blank"
           rel="noreferrer"
-          className="mt-8 text-white text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
+          className="mt-8 text-color text-base md:text-xl leading-[1.5] font-light hover:text-orange-500"
         >
           - You can also check my{" "}
           <span className="underline underline-offset-8">Github profile.</span>

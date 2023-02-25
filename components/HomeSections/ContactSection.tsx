@@ -26,7 +26,7 @@ const ContactSection = () => (
   <section className="home-section" id="contact">
     <div className="max-w-screen-sm md:max-w-screen-lg 2xl:max-w-screen-xl   absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center items-center">
-        <h3 className="md:items-start justify-center flex flex-wrap text-white  text-lg md:text-xl leading-[1.5] font-light hover:text-orange-500">
+        <h3 className="md:items-start justify-center flex flex-wrap text-color  text-lg md:text-xl leading-[1.5] font-light hover:text-orange-500">
           Contact me from
           <span className="ml-2 underline underline-offset-8">
             ahmeterdemgonul@gmail.com

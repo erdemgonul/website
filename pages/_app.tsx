@@ -4,6 +4,8 @@ import Layout from "components/Layout";
 import NProgress from "nprogress";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { ThemeProvider } from "next-themes";
+
 import "styles/nprogress.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -25,8 +27,10 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router]);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider attribute="class">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   );
 }

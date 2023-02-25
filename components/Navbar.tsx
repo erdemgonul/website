@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import ThemeChanger from "./ThemeChanger";
 
 const NAVBAR_LINKS = [
   { link: "https://erdemgonul.medium.com/", name: "Blog", newTab: true },
@@ -22,7 +23,7 @@ const NavLink = ({ link, name, active, newTab = false }) => (
         "lowercase font-normal tracking-wider whitespace-nowrap text-2xl self-center flex link-border link-animation",
         {
           "text-indigo-400 border-b border-indigo-400 px-2": active,
-          "text-white": !active,
+          "text-color": !active,
         }
       )}
     >
@@ -36,10 +37,10 @@ const MobileNavLink = ({ link, mobileName, active, newTab = false }) => (
     <Link
       href={link}
       className={classNames(
-        "tracking-04 font-light capitalize text-2xl text-white hover:border-primary hover:border-b-2 border-white",
+        "tracking-04 font-light capitalize text-2xl text-color hover:border-primary hover:border-b-2 border-white",
         {
           "text-primary border-primary border-b-2": active,
-          "text-white": !active,
+          "text-color": !active,
         }
       )}
       {...(newTab && {
@@ -63,11 +64,11 @@ export default function Navbar() {
   }, [router]);
 
   return (
-    <nav className="fixed right-0 left-0 md:left-[200px] top-0 flex h-[80px]  z-[10] bg-black mx-4">
+    <nav className="fixed right-0 left-0 md:left-[200px] top-0 flex h-[80px]  z-[10] background-color mx-4">
       <div className="hidden md:flex mx-auto  items-center justify-between  w-full max-w-screen-xl px-20 2xl:px-0">
         <Link
           href={"/"}
-          className="text-white font-light text-2xl w-full items-center"
+          className="text-color font-light text-2xl w-full items-center"
         >
           {currentRoute !== "/" && "> Erdem Gönül"}
         </Link>
@@ -84,7 +85,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="h-[80px] px-3 flex md:hidden justify-between w-full items-center z-50">
-        <Link href="/" className="tracking-04 font-light text-xl text-white">
+        <Link href="/" className="tracking-04 font-light text-xl text-color">
           {"Erdem Gönül"}
         </Link>
         <div

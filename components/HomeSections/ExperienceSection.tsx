@@ -6,19 +6,19 @@ const ExperienceSection = () => (
     <div className="max-w-screen-sm md:max-w-screen-lg 2xl:max-w-screen-xl  md:flex md:flex-col md:mx-auto h-full">
       <div className="flex flex-col h-full justify-center">
         <div className="flex justify-between items-center mt-32 md:mt-20   mb-12 ">
-          <h1 className="text-white text-2xl font-light md:font-normal md:text-3xl">
+          <h1 className="text-color text-2xl font-light md:font-normal md:text-3xl">
             Experience
           </h1>
           <a
             href="https://www.linkedin.com/in/erdem-g%C3%B6n%C3%BCl-38a321179/"
             target="_blank"
             rel="noreferrer"
-            className="text-white text-xl"
+            className="text-color text-xl"
           >
             <Linkedin width={40} height={40} fill="#818cf8" />
           </a>
         </div>
-        <ul className=" text-white text-2xl space-y-4 md:space-y-8 md:ml-8">
+        <ul className=" text-color text-2xl space-y-4 md:space-y-8 md:ml-8">
           <li>
             <div className="flex items-center gap-x-4">
               <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
