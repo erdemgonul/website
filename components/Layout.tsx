@@ -48,10 +48,10 @@ export default function Layout({ children }) {
             </div>
           </div>
         </div>
-        <div className="absolute lg:left-[200px] h-full w-full">
+        <div className="absolute lg:left-[200px] h-full w-[calc(100vw-200px)]">
           <div className="relative flex flex-col w-full">
             <Navbar />
-            <div className="flex w-full lg:w-[calc(100vw-200px)] absolute">
+            <div className="flex w-[calc(100vw)] lg:w-[calc(100vw-200px)] absolute">
               {children}
             </div>
           </div>

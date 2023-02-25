@@ -18,7 +18,7 @@ const ExperienceSection = () => (
             <Linkedin
               width={40}
               height={40}
-              className="dark:fill-indigo-400 fill-blue-500"
+              className="dark:fill-indigo-400 fill-blue-500 hover:dark:fill-white hover:fill-black"
             />
           </a>
         </div>

@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function Portfolio({ projects }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [image, setImage] = useState();
+  const [image, setImage] = useState({ src: undefined, mobile: false });
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function Portfolio({ projects }) {
                     className="portfolio-item"
                     key={i}
                     onClick={() => {
-                      setImage(props.image);
+                      setImage({ src: props.image, mobile: props.mobile });
                       setModalVisible(true);
                     }}
                   >
@@ -66,7 +66,11 @@ export default function Portfolio({ projects }) {
         </div>
       </div>
       {modalVisible && (
-        <Modal image={image} handleCloseModal={() => setModalVisible(false)} />
+        <Modal
+          image={image.src}
+          horizontal={!image.mobile}
+          handleCloseModal={() => setModalVisible(false)}
+        />
       )}
     </>
   );

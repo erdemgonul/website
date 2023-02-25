@@ -134,7 +134,7 @@ const parseProjectMdx = async (fileName: string) => {
   const markdownWithMeta = fs.readFileSync(projectsPath(fileName), "utf-8");
   const {
     content,
-    data: { image, link },
+    data: { image, link, mobile },
   } = matter(markdownWithMeta);
   const mdxSource = await serialize(content);
 
@@ -143,6 +143,7 @@ const parseProjectMdx = async (fileName: string) => {
       mdxSource,
       image,
       link,
+      mobile: mobile || false,
     },
   };
 };
