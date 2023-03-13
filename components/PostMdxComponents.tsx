@@ -2,9 +2,9 @@ export const PostMdxComponents = {
   Title: (props: any) => (
     <div className="flex items-center">
       <div className="w-1.5 md:w-2 h-1.5 md:h-2 bg-white rounded-full shrink-0 mr-4 md:mr-8"></div>
-      <h1 className="text-color text-lg font-light md:text-2xl md:font-light">
+      <h2 className="text-color text-lg font-light md:text-2xl md:font-light">
         {props.text}
-      </h1>
+      </h2>
     </div>
   ),
   Text: (props: any) => (
