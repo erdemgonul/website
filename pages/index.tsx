@@ -15,7 +15,7 @@ export default function Home() {
         <title>Erdem Gönül | Frontend Developer</title>
         <meta
           name="description"
-          content="a passionate frontend developer who loves to imagine, design and code. Explore my work and discover my skills in creating beautiful and functional websites that engage and delight users. ahmet erdem gönül."
+          content="a passionate frontend developer who loves to imagine, design and code. Explore my work and discover my skills in creating beautiful and functional websites."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
