@@ -1,10 +1,10 @@
-import Navbar from "./Navbar";
 import Github from "public/svg/github.svg";
 import Linkedin from "public/svg/linkedin.svg";
 import Twitter from "public/svg/twitter.svg";
 import Medium from "public/svg/medium.svg";
 import Link from "next/link";
 import ThemeChanger from "./ThemeChanger";
+import Navbar from "./Navbar";
 
 const SOCIAL_LINKS = [
   {

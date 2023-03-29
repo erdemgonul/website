@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import { getProjects } from "@/helpers/post-helpers";
 import { MDXRemote } from "next-mdx-remote";
 import { PostMdxComponents } from "@/components/PostMdxComponents";
@@ -7,21 +5,25 @@ import Link from "next/link";
 import Modal from "@/components/Modal";
 import { useState } from "react";
 
-export default function Portfolio({ projects }) {
+export const metadata = {
+  title: "Projects | Erdem Gönül",
+  description:
+    "browse my latest projects and discover my expertise in creating engaging and responsive user interfaces that leave a lasting impression.",
+};
+
+const fetchProjects = async () => {
+  const projects = await getProjects();
+
+  return projects;
+};
+
+export default async function Portfolio() {
   const [modalVisible, setModalVisible] = useState(false);
   const [image, setImage] = useState({ src: undefined, mobile: false });
 
+  const projects = await fetchProjects();
   return (
     <>
-      <Head>
-        <title>Projects | Erdem Gönül</title>
-        <meta
-          name="description"
-          content="browse my latest projects and discover my expertise in creating engaging and responsive user interfaces that leave a lasting impression."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="portfolio h-full w-full flex flex-col pt-[100px] md:pt-[150px] pb-20">
         <div className="md:max-w-screen-xl w-full h-full flex flex-col mx-auto">
           <h1 className="mb-12 md:mb-20 text-color font-light border-b border-gray-300 pb-4 px-3 text-2xl md:text-4xl">
@@ -75,13 +77,3 @@ export default function Portfolio({ projects }) {
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const projects = await getProjects();
-
-  return {
-    props: {
-      projects,
-    },
-  };
-};

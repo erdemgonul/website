@@ -1,3 +1,5 @@
+"use client";
+
 import ArrowDown from "public/svg/arrow-down-solid.svg";
 
 type Props = {
