@@ -1,10 +1,10 @@
 # erdemgonul.com
 
-My personal website for learning NextJS.
+My personal website with NextJS.
 
 # Technologies
 
 - React
-- NextJS
+- NextJS 13 App Directory
 - TailwindCSS
 - Vercel
