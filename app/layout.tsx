@@ -1,20 +1,7 @@
-import { useRouter } from "next/navigation";
-import "styles/nprogress.scss";
-import NProgress from "nprogress";
-import { Html, Head, Main, NextScript } from "next/document";
 import Layout from "@/components/Layout";
 import Providers from "@/components/Providers";
-import "/styles/globals.scss";
-
-// const handleStart = () => NProgress.start();
-
-// const handleStop = () => NProgress.done();
-
-// const router = useRouter();
-
-// router.events.on("routeChangeStart", handleStart);
-// router.events.on("routeChangeComplete", handleStop);
-// router.events.on("routeChangeError", handleStop);
+import "styles/globals.scss";
+import { Open_Sans } from "next/font/google";
 
 export const metadata = {
   title: {
@@ -26,13 +13,15 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
+const openSans = Open_Sans({ subsets: ["latin"], display: "swap" });
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={openSans.className}>
       <body>
         <Providers>
           <Layout>{children}</Layout>

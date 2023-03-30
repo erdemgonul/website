@@ -4,9 +4,9 @@ import {
   ExperienceSection,
   IntroSection,
   PortfolioSection,
-} from "components/HomeSections";
+} from "@/components/HomeSections";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="homepage">
       <IntroSection />
