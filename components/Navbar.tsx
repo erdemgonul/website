@@ -37,7 +37,7 @@ export default function Navbar() {
   const currentRoute = usePathname();
 
   return (
-    <nav className="fixed top-[0px]  lg:left-[200px] flex w-full lg:max-w-[calc(100vw-240px)] max-w-[calc(100vw-40px)]  z-[10] background-color ">
+    <nav className="fixed top-[0px]  lg:left-[200px] flex w-full lg:max-w-[calc(100vw-240px)] max-w-[calc(100vw-20px)]  z-[10] background-color ">
       <div className="hidden h-[80px] md:flex mx-auto  items-center justify-between  w-full px-4 lg:px-20 2xl:px-20">
         <Link
           href={"/"}

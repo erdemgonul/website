@@ -48,7 +48,7 @@ export default function Layout({ children }) {
         </div>
       </div>
       <Navbar />
-      <div className="absolute lg:left-[200px] w-[calc(100vw-200px)]">
+      <div className="absolute lg:left-[200px] lg:w-[calc(100vw-200px)]">
         {children}
       </div>
 

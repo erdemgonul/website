@@ -248,15 +248,10 @@ svg {
   height: 100%;
 
   section {
-    @apply flex flex-col relative 2xl:px-32 md:mx-32 mx-4 justify-around;
+    @apply flex flex-col relative 2xl:px-32 md:mx-12 mx-4 justify-around;
     height: 100vh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-  }
-
-  .scroll-button {
-    // @apply right-0 w-full absolute bottom-0;
-    @apply static;
   }
 
   #experience {
