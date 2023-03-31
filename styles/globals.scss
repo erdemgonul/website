@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+:root {
+  --app-height: 100vh;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -217,11 +221,14 @@ svg {
 }
 
 .homepage {
-  @apply background-color snap-y snap-mandatory h-screen  overflow-y-scroll  mx-auto w-full;
+  @apply background-color snap-y snap-mandatory overflow-y-scroll  mx-auto w-full;
+
+  height: var(--app-height);
 
   section {
     scroll-snap-align: start;
-    @apply flex flex-col h-[calc(100vh)] relative 2xl:px-32 md:mx-32 mx-6;
+    @apply flex flex-col relative 2xl:px-32 md:mx-32 mx-6;
+    height: var(--app-height);
   }
 
   .scroll-button {
