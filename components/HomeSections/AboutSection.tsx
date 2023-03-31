@@ -2,7 +2,8 @@ import ScrollButton from "../ScrollButton";
 
 const AboutSection = () => (
   <section className="home-section" id="about">
-    <div className=" md:flex md:flex-col md:mx-auto h-full">
+    <div></div>
+    <div className=" md:flex md:flex-col md:mx-auto">
       <div className="flex flex-col h-full justify-center">
         <h3 className="text-color text-lg md:text-xl leading-[1.5] font-light">
           {

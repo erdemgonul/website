@@ -28,34 +28,28 @@ const SOCIAL_LINKS = [
 export default function Layout({ children }) {
   return (
     <>
-      <div className="flex  w-full h-full">
-        <div className="hidden lg:block rightbar fixed left-0 top-0 z-50 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] bg-indigo-400">
-          <div className="relative w-full h-full">
-            <div className="absolute left-0 right-0 top-[50px] flex justify-center items-center">
-              <ThemeChanger />
-            </div>
-            <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
-              {SOCIAL_LINKS.map(({ link, Icon }) => (
-                <Link
-                  key={link}
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <Icon fill="#151515" width={48} height={48} />
-                </Link>
-              ))}
-            </div>
+      <div className="hidden lg:block rightbar fixed left-0 top-0 z-50 w-[50px] md:w-[200px] h-screen transition-all duration-[400ms] bg-indigo-400">
+        <div className="relative w-full h-full">
+          <div className="absolute left-0 right-0 top-[50px] flex justify-center items-center">
+            <ThemeChanger />
+          </div>
+          <div className="absolute left-0 right-0 bottom-[50px] self-center items-center  md:space-y-4 flex flex-col ">
+            {SOCIAL_LINKS.map(({ link, Icon }) => (
+              <Link
+                key={link}
+                href={link}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Icon fill="#151515" width={48} height={48} />
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="absolute lg:left-[200px] h-full w-[calc(100vw-200px)]">
-          <div className="relative flex flex-col w-full">
-            <Navbar />
-            <div className="flex w-[calc(100vw)] lg:w-[calc(100vw-200px)] absolute">
-              {children}
-            </div>
-          </div>
-        </div>
+      </div>
+      <Navbar />
+      <div className="absolute lg:left-[200px] w-[calc(100vw-200px)]">
+        {children}
       </div>
 
       {/* <Footer /> */}

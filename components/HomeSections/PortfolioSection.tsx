@@ -3,7 +3,8 @@ import ScrollButton from "../ScrollButton";
 
 const PortfolioSection = () => (
   <section className="home-section" id="portfolio">
-    <div className="max-w-screen-xl  absolute left-0 right-0 md:flex md:flex-col md:mx-auto h-full">
+    <div></div>
+    <div className="max-w-screen-xl  md:flex md:flex-col md:mx-auto">
       <div className="flex flex-col h-full justify-center">
         <Link
           href="/projects"

@@ -36,28 +36,29 @@ const MobileNavLink = ({ link, mobileName, active, newTab = false }) => (
 export default function MobileNavbar() {
   const [showModal, setShowModal] = useState(false);
   const currentRoute = usePathname();
-
   useEffect(() => {
     showModal && setShowModal(false);
     //eslint-disable-next-line
   }, [currentRoute]);
 
-  useEffect(() => {
-    const appHeight = () => {
-      const doc = document.documentElement;
-      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
-    };
-    window.addEventListener("resize", appHeight);
-    appHeight();
+  // useEffect(() => {
+  //   const appHeight = () => {
+  //     const doc = document.documentElement;
+  //     doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+  //   };
+  //   // window.addEventListener("resize", appHeight);
+  //   appHeight();
 
-    return () => {
-      window.removeEventListener("resize", appHeight);
-    };
-  }, []);
+  //   console.log("hop");
+
+  //   return () => {
+  //     // window.removeEventListener("resize", appHeight);
+  //   };
+  // }, []);
 
   return (
     <>
-      <div className="h-[80px] px-3 flex md:hidden justify-between w-full items-center z-50">
+      <div className="h-[80px] px-4 flex md:hidden justify-between w-full items-center z-50">
         <Link href="/" className="tracking-04 font-light text-xl text-color">
           {"Erdem Gönül"}
         </Link>

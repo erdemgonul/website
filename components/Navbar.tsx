@@ -37,11 +37,11 @@ export default function Navbar() {
   const currentRoute = usePathname();
 
   return (
-    <nav className="fixed right-0 left-0 lg:left-[200px] top-0 flex h-[80px]  z-[10] background-color mx-4">
-      <div className="hidden md:flex mx-auto  items-center justify-between  w-full max-w-screen-xl px-4 lg:px-20 2xl:px-0">
+    <nav className="fixed top-[0px]  lg:left-[200px] flex w-full lg:max-w-[calc(100vw-240px)] max-w-[calc(100vw-40px)]  z-[10] background-color ">
+      <div className="hidden h-[80px] md:flex mx-auto  items-center justify-between  w-full px-4 lg:px-20 2xl:px-20">
         <Link
           href={"/"}
-          className="text-color font-light text-2xl w-full items-center"
+          className="text-color font-light text-2xl w-fit whitespace-nowrap items-center"
         >
           {currentRoute !== "/" && "> Erdem Gönül"}
         </Link>

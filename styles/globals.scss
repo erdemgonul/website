@@ -8,13 +8,22 @@
   margin: 0;
 }
 
-:root {
-  --app-height: 100vh;
-}
-
 html,
 body {
   max-width: 100vw;
+  overflow-x: hidden;
+}
+
+html {
+  @apply bg-black;
+}
+
+body {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-padding: 0px;
+  position: relative;
   overflow-x: hidden;
   @apply background-color;
 }
@@ -100,7 +109,7 @@ a {
 // }
 
 .slogan {
-  @apply mx-4 md:mx-0 font-bold text-5xl  md:text-9xl tracking-tighter text-color leading-[1];
+  @apply md:mx-0 font-bold text-5xl  md:text-9xl tracking-tighter text-color leading-[1];
 
   &:hover {
     .keyword {
@@ -111,7 +120,7 @@ a {
 }
 
 .sub-slogan {
-  @apply mx-4 md:mx-0 font-bold text-5xl  md:text-8xl tracking-tighter text-[#818cf8] leading-[1] red-animation;
+  @apply md:mx-0 font-bold text-5xl  md:text-8xl tracking-tighter text-[#818cf8] leading-[1] red-animation;
 
   &:hover {
     .keyword {
@@ -221,26 +230,37 @@ svg {
 }
 
 .homepage {
-  @apply background-color snap-y snap-mandatory overflow-y-scroll  mx-auto w-full;
+  @apply background-color mx-auto w-full;
+  &::-webkit-scrollbar-track {
+    height: 100vh;
+    color: red;
+    background-color: red;
+  }
 
-  height: var(--app-height);
+  &::-webkit-scrollbar {
+    height: 100vh;
+    color: red;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+  }
+  height: 100%;
 
   section {
+    @apply flex flex-col relative 2xl:px-32 md:mx-32 mx-4 justify-around;
+    height: 100vh;
     scroll-snap-align: start;
-    @apply flex flex-col relative 2xl:px-32 md:mx-32 mx-6;
-    height: var(--app-height);
+    scroll-snap-stop: always;
   }
 
   .scroll-button {
-    @apply absolute bottom-[30px] right-0 w-full;
+    // @apply right-0 w-full absolute bottom-0;
+    @apply static;
   }
 
   #experience {
-    @apply h-fit md:h-screen overflow-y-auto;
-
-    .scroll-button {
-      @apply static md:absolute mt-10 md:mt-0;
-    }
+    @apply md:h-screen overflow-y-auto justify-evenly;
 
     .subtitle {
       @apply text-lg md:text-2xl text-gray-500 ml-2;
