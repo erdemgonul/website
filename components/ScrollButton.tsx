@@ -16,7 +16,12 @@ const ScrollButton = ({ nextSection, nextSectionId }: Props) => {
   };
 
   return (
-    <button className="scroll-button" onClick={handleScrollSection}>
+    <button
+      className="scroll-button"
+      onClick={handleScrollSection}
+      name="scroll-button"
+      aria-label="scroll-button"
+    >
       <div className="max-w-screen-xl mx-auto w-full flex justify-center items-center gap-x-4 group">
         <span className="text-color text-base font-light cursor-pointer group-hover:text-orange-500">
           {nextSection}

@@ -39,6 +39,7 @@ const ContactSection = () => (
               href={link}
               target="_blank"
               rel="noreferrer noopener"
+              aria-label={link}
             >
               <Icon
                 className="dark:fill-indigo-400 fill-black dark:hover:fill-white hover:fill-black"

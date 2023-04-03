@@ -30,6 +30,7 @@ const ThemeChanger = () => {
           <Moon className="moon" />
         </div>
         <input
+          aria-label="theme-switcher"
           id="toggle"
           name="toggle"
           type="checkbox"

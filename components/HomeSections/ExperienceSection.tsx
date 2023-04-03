@@ -14,6 +14,7 @@ const ExperienceSection = () => (
             target="_blank"
             rel="noreferrer"
             className="text-color text-xl"
+            aria-label="linkedin-link"
           >
             <Linkedin
               width={40}
@@ -33,11 +34,11 @@ const ExperienceSection = () => (
                 </h3>
               </div>
             </div>
-            <h5 className="text">
+            <p className="text">
               At my internship period, I participated in bootcamps on backend
               and frontend technologies. I have developed a Netflix-like web
               project using IMDB API.
-            </h5>
+            </p>
           </li>
           <li>
             <div className="flex items-center gap-x-4">
@@ -50,14 +51,14 @@ const ExperienceSection = () => (
                 </h3>
               </div>
             </div>
-            <h5 className="text">
+            <p className="text">
               I took part in the development of a mobile banking application in
               my internship period at Intertech. Afterwards, I continued to work
               as a part time student. In this process, I took part in the
               development of bank application screens. After my graduation, I
               started as a full time and took part in the development of a low
               code product.
-            </h5>
+            </p>
           </li>
           <li>
             <div className="flex items-center gap-x-4">
@@ -70,11 +71,11 @@ const ExperienceSection = () => (
                 </h3>
               </div>
             </div>
-            <h5 className="text">
+            <p className="text">
               I work in a Frontend team that we support many different projects
               in Trendyol. We develop many tools and products for improving
               Developer Experience.
-            </h5>
+            </p>
           </li>
         </ul>
       </div>

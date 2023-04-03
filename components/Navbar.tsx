@@ -41,6 +41,7 @@ export default function Navbar() {
       <div className="hidden h-[80px] md:flex mx-auto  items-center justify-between  w-full px-4 lg:px-20 2xl:px-20">
         <Link
           href={"/"}
+          aria-label="homepage"
           className="text-color font-light text-2xl w-fit whitespace-nowrap items-center"
         >
           {currentRoute !== "/" && "> Erdem Gönül"}

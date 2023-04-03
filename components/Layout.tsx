@@ -40,6 +40,7 @@ export default function Layout({ children }) {
                 href={link}
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label={link}
               >
                 <Icon fill="#151515" width={48} height={48} />
               </Link>
