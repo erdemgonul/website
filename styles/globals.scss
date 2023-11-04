@@ -8,26 +8,6 @@
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-html {
-  @apply bg-black;
-}
-
-body {
-  height: 100vh;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-padding: 0px;
-  position: relative;
-  overflow-x: hidden;
-  @apply background-color;
-}
-
 ::selection {
   background-color: #f97316;
 }
@@ -78,8 +58,8 @@ a {
   color: inherit;
   text-decoration: none;
   &:hover {
-    color: #f97316 !important;
-    border-color: #f97316;
+    color: #ff0046 !important;
+    border-color: #ff0046;
   }
 }
 
@@ -89,7 +69,7 @@ a {
     display: block;
     width: 0;
     height: 1.5px;
-    background: #f97316;
+    background: #ff0046;
     transition: width 0.4s ease-in;
   }
 
@@ -109,7 +89,7 @@ a {
 // }
 
 .slogan {
-  @apply md:mx-0 font-bold text-5xl  md:text-9xl tracking-tighter text-color leading-[1];
+  @apply md:mx-0 font-bold text-7xl tracking-tighter text-color leading-[1];
 
   &:hover {
     .keyword {
@@ -120,7 +100,7 @@ a {
 }
 
 .sub-slogan {
-  @apply md:mx-0 font-bold text-5xl  md:text-8xl tracking-tighter text-[#818cf8] leading-[1] red-animation;
+  @apply md:mx-0 font-bold text-7xl tracking-tighter text-red leading-[1] red-animation;
 
   &:hover {
     .keyword {
@@ -199,22 +179,22 @@ a {
 
 .nav-animation {
   transition: 0.2s ease-in;
-  @apply hover:text-orange-500 hover:border-orange-500;
+  @apply hover:text-red hover:border-red;
 }
 
 .red-animation {
   transition: 0.5s ease-in;
-  @apply hover:text-orange-500;
+  @apply hover:text-red;
 }
 
 .svg-animation {
   transition: 0.2s ease-in;
-  @apply hover:fill-orange-500;
+  @apply hover:fill-red;
 }
 
 svg {
   transition: 0.2s ease-in;
-  @apply hover:fill-white;
+  @apply hover:fill-red;
 }
 
 .indigo-bg {
@@ -230,26 +210,10 @@ svg {
 }
 
 .homepage {
-  @apply background-color mx-auto w-full;
-  &::-webkit-scrollbar-track {
-    height: 100vh;
-    color: red;
-    background-color: red;
-  }
-
-  &::-webkit-scrollbar {
-    height: 100vh;
-    color: red;
-    background-color: red;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-  }
-  height: 100%;
+  @apply background-color mx-auto w-full h-[calc(100vh_-_132px)] items-end flex;
 
   section {
-    @apply flex flex-col relative 2xl:px-32 md:mx-12 mx-4 justify-around;
-    height: 100vh;
+    @apply flex flex-col relative 2xl:px-32 md:mx-12 mx-4 justify-end pb-20;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
@@ -272,17 +236,13 @@ svg {
 }
 
 .portfolio {
-  @apply w-full px-4 md:px-20 background-color;
+  @apply w-full px-4 md:px-0 background-color;
 
   .portfolio-body {
-    @apply md:mt-12 w-full snap-y snap-mandatory overflow-y-scroll flex flex-col md:ml-2 list-disc list-inside items-start gap-y-6 md:gap-y-12;
-    &::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
-    }
+    @apply md:mt-12 w-full flex flex-col md:ml-2 list-disc list-inside items-start gap-y-6 md:gap-y-8;
 
     .portfolio-item {
-      @apply ml-4 md:ml-8 flex flex-col text-color  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer hover:opacity-[0.3];
+      @apply flex flex-col text-color  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer hover:opacity-[0.3];
     }
   }
 }

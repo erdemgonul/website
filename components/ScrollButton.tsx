@@ -28,6 +28,7 @@ const ScrollButton = ({ nextSection, nextSectionId }: Props) => {
         </span>
         <ArrowDown
           width={32}
+          rotate={90}
           height={32}
           className="cursor-pointer dark:fill-white fill:black group-hover:fill-orange-500 transition-none"
         />

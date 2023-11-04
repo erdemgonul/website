@@ -15,9 +15,6 @@ const withMDX = require("@next/mdx")({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   // Configure pageExtensions to include md and mdx
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // Optionally, add any other Next.js config below
@@ -31,13 +28,11 @@ const nextConfig = {
       },
     ],
   },
-  webpack(config) {
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
-
     return config;
   },
 };

@@ -1,11 +1,3 @@
-import {
-  AboutSection,
-  ContactSection,
-  ExperienceSection,
-  IntroSection,
-  PortfolioSection,
-} from "@/components/HomeSections";
-
 export const metadata = {
   title: "Erdem Gönül | Frontend Developer",
   description:
@@ -15,11 +7,14 @@ export const metadata = {
 export default async function Home() {
   return (
     <div className="homepage">
-      <IntroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <PortfolioSection />
-      <ContactSection />
+      <section>
+        <div className="max-w-screen-lg md:flex md:flex-col bottom-0">
+          <div className="flex flex-col w-fit">
+            <h1 className="slogan">Erdem Gönül</h1>
+            <h2 className="sub-slogan">Frontend Developer</h2>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
