@@ -12,14 +12,19 @@ export const PostMdxComponents = {
     </div>
   ),
   Title: (props: any) => (
-    <h1 className="text-zinc-800  md:!mb-12 text-[44px] leading-[1.1] font-normal md:text-6xl md:font-extrabold">
+    <h1 className="text-black !mb-4 md:!mb-6 text-[44px] leading-[1.1] font-normal md:text-6xl md:font-extrabold">
       {props.text}
     </h1>
   ),
   Date: (props: any) => (
-    <h5 className="text-black font-normal text-sm tracking-widest mb-6">
+    <h5 className="text-slate-500 font-light text-sm tracking-widest mb-6">
       {props.text}
     </h5>
+  ),
+  Subtitle: (props: any) => (
+    <h4 className="font-light text-zinc-500 !mb-0 !mt-0 md:text-2xl">
+      {props.text}
+    </h4>
   ),
   Subheader: (props: any) => (
     <h4 className="font-normal text-black !my-12 !text-2xl md:!text-3xl">
