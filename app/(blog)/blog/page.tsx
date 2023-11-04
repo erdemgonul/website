@@ -3,7 +3,7 @@ import FeaturedPostItem from "@/components/blog/FeaturedPostItem";
 import PostItem from "@/components/blog/PostItem";
 
 export const metadata = {
-  title: "Blog | Erdem Gönül",
+  title: "Blog",
   description:
     "browse my latest projects and discover my expertise in creating engaging and responsive user interfaces that leave a lasting impression.",
 };
@@ -12,7 +12,7 @@ export default async function Blog() {
   const blogPosts = getBlogs();
 
   const featuredPost = blogPosts?.[0];
-  const posts = blogPosts.slice(1);
+  const posts = blogPosts?.slice?.(1) || [];
 
   return (
     <main className="mx-[10%] mt-20">

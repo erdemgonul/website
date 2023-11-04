@@ -12,8 +12,7 @@ import Medium from "public/svg/medium.svg";
 const NAVBAR_LINKS = [
   { link: "/blog", name: "Blog" },
   { link: "/projects", name: "Projects" },
-  { link: "/#about", name: "About" },
-  { link: "/#contact", name: "Contact" },
+  { link: "/about", name: "About" },
 ];
 
 const SOCIAL_LINKS = [
@@ -40,7 +39,7 @@ const NavLink = ({ link, name, active, theme }) => (
     <Link
       href={link}
       className={classNames(
-        "font-semibold tracking-wider whitespace-nowrap text-lg self-center flex link-border link link-animation",
+        "font-semibold uppercase tracking-widest whitespace-nowrap text-base self-center flex link-border link link-animation",
         {
           "text-black": theme === "light",
           "text-white": theme === "dark",

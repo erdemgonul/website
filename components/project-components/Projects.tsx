@@ -12,12 +12,12 @@ export default function Projects({ projects }) {
 
   return (
     <>
-      <ul className="portfolio-body">
+      <ul className="md:mt-12 w-full flex flex-col md:ml-2 list-disc list-inside items-start gap-y-6 md:gap-y-8">
         {(projects || []).map(({ props }, i: number) => {
           if (props.image) {
             return (
               <div
-                className="portfolio-item"
+                className="flex flex-col text-white  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer group"
                 key={i}
                 onClick={() => {
                   setImage({ src: props.image, mobile: props.mobile });
@@ -33,7 +33,7 @@ export default function Projects({ projects }) {
           } else {
             return (
               <Link
-                className="portfolio-item"
+                className="flex flex-col text-white  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer group"
                 key={i}
                 href={props.link}
                 target="_blank"

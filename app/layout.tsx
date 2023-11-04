@@ -1,4 +1,3 @@
-import Providers from "@/components/Providers";
 import "styles/globals.scss";
 import { Open_Sans } from "next/font/google";
 
@@ -21,9 +20,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={openSans.className}>
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
