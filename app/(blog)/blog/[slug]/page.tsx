@@ -3,15 +3,9 @@ import {
   generateDynamicBlogPosts,
   getBlogPostContent,
 } from "@/helpers/blog-helpers";
-import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import BackIcon from "public/svg/back.svg";
-
-export const metadata: Metadata = {
-  title: "My Page Title",
-  description: "Test",
-};
 
 export default async function BlogPost({ params: { slug } }) {
   const { mdxSource } = await getBlogPostContent(slug);
@@ -39,4 +33,13 @@ export default async function BlogPost({ params: { slug } }) {
 export const generateStaticParams = async () => {
   const { paths } = generateDynamicBlogPosts();
   return paths;
+};
+
+export const generateMetadata = async ({ params: { slug } }) => {
+  const { frontMatter } = await getBlogPostContent(slug);
+
+  return {
+    title: frontMatter.title,
+    description: frontMatter.description,
+  };
 };

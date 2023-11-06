@@ -5,7 +5,7 @@ import PostItem from "@/components/blog/PostItem";
 export const metadata = {
   title: "Blog",
   description:
-    "browse my latest projects and discover my expertise in creating engaging and responsive user interfaces that leave a lasting impression.",
+    "browse my latest blog posts and discover my expertise in creating engaging and responsive user interfaces that leave a lasting impression.",
 };
 
 export default async function Blog() {

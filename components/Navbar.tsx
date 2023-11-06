@@ -74,7 +74,7 @@ export default function Navbar({ theme = "dark" }) {
             }
           )}
         >
-          {currentRoute !== "/" && "> Erdem Gönül"}
+          {currentRoute !== "/" && "Erdem Gönül"}
         </Link>
         <div></div>
         <ul className="flex items-center gap-x-8">

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "",
+  title: "Home",
   description:
     "a passionate frontend developer who loves to imagine, design and code. Explore my work and discover my skills in creating beautiful and functional websites that engage and delight users. ahmet erdem gönül.",
 };
