@@ -1,13 +1,17 @@
+import classNames from "classnames";
 import Image from "next/image";
 
 export const PostMdxComponents = {
-  Image: (props: any) => (
-    <div className="bg-[#1B1D1F] h-[250px] md:h-[500px] !my-10 relative">
+  Image: ({ contain = true, cover = false, ...props }: any) => (
+    <div className="h-[250px] md:h-[500px] !my-4 relative">
       <Image
         alt="sample photo"
         {...props}
         fill
-        className="!mt-0 !mb-0 object-cover"
+        className={classNames("!mt-0 !mb-0", {
+          "object-contain": contain,
+          "object-cover": cover,
+        })}
       />
     </div>
   ),
@@ -17,7 +21,7 @@ export const PostMdxComponents = {
     </h1>
   ),
   Date: (props: any) => (
-    <h5 className="text-slate-500 font-light text-sm tracking-widest mb-6">
+    <h5 className="text-slate-500 font-medium text-sm tracking-widest mb-6">
       {props.text}
     </h5>
   ),
@@ -27,9 +31,10 @@ export const PostMdxComponents = {
     </h4>
   ),
   Subheader: (props: any) => (
-    <h4 className="font-normal text-black !my-12 !text-2xl md:!text-3xl">
-      {props.text}
-    </h4>
+    <h4 className="font-semibold text-black !my-12 !text-xl">{props.text}</h4>
+  ),
+  SubSubheader: (props: any) => (
+    <h5 className="font-semibold text-black !my-12 !text-lg">{props.text}</h5>
   ),
   Quote: (props: any) => (
     <h5 className="ml-2 md:ml-4 border-l border-gray-400 py-1 md:py-3 px-4 text-slate-500 font-light text-base tracking-widest mb-6">

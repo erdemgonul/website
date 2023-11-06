@@ -1,0 +1,125 @@
+---
+title: "Styling Custom Components in Svelte"
+description: "As someone who started my entire frontend experience with React and Vue, the problem that bothered me the most when I switched to Svelte was that “we could not give external CSS classes to the custom components we defined, with the approaches we know”."
+date: "2022-12-14T05:35:07.322Z"
+thumbnailUrl: "/styling-svelte.webp"
+category: "svelte,frontend"
+---
+
+<Date text="14 December 2021" />
+<Title text="Styling Custom Components in Svelte" />
+
+<Image src="/styling-svelte.webp" alt="styling-svelte" />
+
+As someone who started my entire frontend experience with React and Vue, the problem that bothered me the most when I switched to Svelte was that “we could not give external CSS classes to the custom components we defined, with the approaches we know”. It prevented me from making these components as reusable as possible. The solutions I made on this topic on the internet were completely against the approach of the already popular Frontend frameworks.
+
+```js
+<CustomComponent class="some-class" />
+<style>
+   .some-class{ background-color:red;}
+</style>
+```
+
+In the classical approach above, we could change the style of the custom component like this. In Svelte, however, the class defined in the parent cannot be found in the custom component.
+
+You can find many discussions on this subject on Github, but Svelte did not prefer this method and they offer different solutions.
+
+<Subheader text="Solutions" />
+
+<SubSubheader text="#1 Using a Wrapper Div on Parent" />
+
+```js
+<div class="some-class">
+    <CustomComponent/>
+</div>
+<style>
+   .some-class{ background-color:red;}
+</style>
+```
+
+Defining a wrapper div for each custom component solves 90 percent of the cases that may be encountered, but creates a nested mess for me.
+
+<SubSubheader text="#2 Declare classes inside custom component & pass class names as prop" />
+
+```js
+/*Parent Component*/
+<CustomComponent className="some-class"/>
+/*Child Component*/
+<script> export let className; </script>
+<div class={className}></div>
+<style>
+   .some-class{ background-color:red;}
+</style>
+```
+
+**#2** can be useful for components that will be written a little narrower and not expandable. Example: info button, action button, warning button
+
+<SubSubheader text="#3 CSS Variables Values via Component Props" />
+
+```js
+/*Parent Component*/
+<CustomComponent --color="red"/>
+/*Child Component*/
+<div class="some-class">123</div>
+<style>
+   .some-class{background-color: var(--color);}
+</style>
+```
+
+This is one of my favorite features of this Svelte. We can pass external CSS variables as props and pass them into style in the child component. This is a method that can be used in limited places, but where we can see many benefits.
+
+<SubSubheader text="#4 Global CSS" />
+
+```js
+/*Parent Component*/
+<div class="body">
+   <CustomComponent/>
+</div>
+<style>
+ .body > :global(.some-class) {
+    background-color:red;
+ }
+</style>
+/*Child Component*/
+<div class="some-class">123</div>
+```
+
+Defining CSS classes globally seems to be the most popular and broadest solution. The only drawback of this is that if the class names we define globally are given elsewhere in the project, it will also affect those. As a solution to this, we can use an approach like ‘some-class’ under the parent component.
+
+I prefer to use SCSS instead of using plain CSS to make this parent child relationship. Defining CSS classes globally seems to be the most popular and broadest solution. The only drawback of this is that if the class names we define globally are given elsewhere in the project, it will also affect those. As a solution to this, we can use an approach like ‘some-class’ under the parent component.
+
+I prefer to use SCSS instead of using plain CSS to make this parent child relationship. Here, as we know, the SCSS state is like this:
+
+```js
+/*Parent Component*/
+<div class="body">
+   <CustomComponent/>
+</div>
+<style lang="scss">
+ .body{
+     :global(.some-class) {
+        background-color:red;
+     }
+ }
+</style>
+/*Child Component*/
+<div class="some-class">123</div>
+```
+
+You can follow here to get your Svelte project ready to use SASS.
+
+[How To Use SCSS With Svelte Docs](https://dev.to/mefaba/how-to-use-scss-with-svelte-4c6o?source=post_page-----3723ad752cd2--------------------------------)
+
+<Subheader text="Summary" />
+
+I am writing this article as someone who has experienced Svelte for 3 weeks and I can say that I really like the project in general.
+
+I wrote this article because I could not find ALL SIMPLE ways on this subject together and for those coming from other frameworks to adapt Svelte quickly.
+
+I would like to continue writing articles as my svelte experiences deepen, and I would be happy to edit this article if you add or change it or share your **BEGINNING** level methods that you think are cooler.
+
+Recommended stories:
+
+[What I Like About Writing Styles With Svelte](https://css-tricks.com/what-i-like-about-writing-styles-with-svelte/?source=post_page-----3723ad752cd2--------------------------------)
+
+[Short Stories working on Svelte](https://lihautan.com/short-stories-working-on-svelte/?source=post_page-----3723ad752cd2--------------------------------)

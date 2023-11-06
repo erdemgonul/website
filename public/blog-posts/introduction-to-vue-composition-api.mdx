@@ -1,0 +1,190 @@
+---
+title: "Introduction To Vue Composition API"
+description: "While coding an address create component, I needed a form validation library and I decided to use the latest version of the vee-validate library. I made this component using Vue2 before"
+date: "2021-05-22T05:35:07.322Z"
+thumbnailUrl: "/desert-road.webp"
+category: "vue,frontend,backend,socketio"
+---
+
+<Date text="22 May 2021" />
+<Title text="Introduction To Vue Composition API" />
+
+<Image src="/desert-road.webp" alt="desert-road" />
+
+As someone who started writing code with the Java etc., the sequential flow of the code has always been a feature that makes the code easy to read. When I entered the frontend world with React, the difference of the structure did not cause much trouble because the React Hooks structure, which was newly released at that time, facilitated code readability and thus I quickly strengthened myself on the React side.
+
+After developing different projects over time, I needed to learn Vue as part of my job and I started working with Vue during this period. These days I discovered the **Composition API** on **Vue3** and decided to rewrite a simple component I had made earlier with the Vue Composition API and examine the differences. After reading the Vue documentation and a few articles I found on Google, I realized that what I needed was the Vue Composition structure.
+
+If I need to come to the more technical side, there are different structures in vue such as **props, data, methods, watchers, computed**.
+
+**Props**: The place where the values from the component parent we are in are kept.
+
+**Data**: The place where the values we will show on the screen that we will use in the component are kept.
+
+**Methods**: The place where the methods to be used in the component are written
+
+**Watchers**: When a data in a component changes, the part that is used to catch the change in that data and take action.
+
+**Computed**: The place where values are kept, just like the watcher, to capture changes and keep the new value that will result from these changes
+
+Let's make a simple application and use them in the project and understand what they are useful for.
+
+We will send a list of words into this component, and using these words, it will randomly create sentences from within that list. We will determine the number of words in each sentence and keep all the sentences at a value.
+
+<Image src="/introduction-vue-1.webp" alt="introduction-vue-1" />
+
+I am assuming you've installed **vue-cli** to create new Vue Projects. In CLI, create the project using Vue3 version.
+
+```bash
+vue create composition-api-project
+cd composition-api-project
+npm run serve
+```
+
+After creating the project we change directory to the project folder and run **npm run serve** on terminal to start our development server.
+
+In that post, I will not share the unrelated codes in here but you can find the github repository in bottom of post.
+
+In **App.vue** file I added a subcomponent which is called **TraditionalVueComponent** and fed it with **sampleWords**.
+
+```js
+<TraditionalVueComponent :sampleWords="sampleWords" />
+```
+
+I created the TraditionalVueComponent.vue file in components folder.
+
+```js
+<template>
+  <div>
+    <h1>Vue Options API (Traditional Vue Approach)</h1>
+    <label>Word Count:</label>
+    <div>
+      <input type="number" v-model="wordCount" />
+      <br />
+      <input
+        type="button"
+        @click="generateSentence"
+        value="Generate Random Sentences"
+      />
+      <input type="button" @click="clear" value="Clear" />
+    </div>
+    <h1>Generated Sentence:</h1>
+    <h1>{{ sentence }}</h1>
+
+    <h3>Total Generated Sentence:</h3>
+    <h3>{{ totalSentence }}</h3>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "TraditionalVueComponent",
+  //Case: Props
+  props: {
+    sampleWords: [String],
+  },
+  //Case: Data
+  data() {
+    return {
+      sentence: "",
+      wordCount: 3,
+      totalSentence: "",
+    };
+  },
+  //Case: Methods
+  methods: {
+    generateSentence() {
+      let tempSentence = "";
+      for (let i = 0; i < this.wordCount; i++) {
+        tempSentence +=
+          this.sampleWords[
+            Math.floor(Math.random() * this.sampleWords.length)
+          ] + " ";
+      }
+      this.sentence = tempSentence;
+    },
+    clear() {
+      this.totalSentence = "";
+    },
+  },
+  //Case: Watch
+  watch: {
+    sentence(oldValue, newValue) {
+      this.totalSentence += newValue;
+    },
+  },
+};
+</script>
+```
+
+In this code, we have props, data, methods and watchers. Component is fed by parent with **sampleWords** and we will use that words for read-only purposes. In data we store the values that we will render in template part which are **sentence**, **totalSentence** and **wordCount**.
+
+We have two methods **generateSentence()**, **clear()**.
+
+** generateSentence() **: create random sentence by using **wordCount(data)** and **sampleWords(props)**. This method changes the 'sentence' and Vue automatically re-renders page.
+
+**clear()**: totalSentence is set to empty string and re-renders page.
+
+And lastly we have **watchers** part. It watches the sentence data, any changes on sentence will trigger these code. We will use that part for appending **sentence** into **totalSentence**.
+
+As this project proceeds with simple examples, as you can see, the code is not at an unreadable level. But imagine that the lines of code in your project are constantly increasing and readability decreasing. The need for the code to be divided into such parts is a situation that slows down the development phase and makes debugging difficult for me. The Composition API that comes with Vue3 solves this situation.
+
+Now I will write the same component using the **Composition API** and observe the differences.
+
+First of all, template part is totally same with traditional approach. Only change happens between **script tags**.
+
+### Setup Function
+
+Instead of **data, methods, watchers, computed** structures , the **setup function** is used. It packages all of those structures into one function and increases code readability. And also because of writing everything inside setup function we don't need to use **this** . Declared variables and methods should be returned in setup function with return.
+
+I divided codes with comments to show the differences between two approaches. Those differences will be explained in above.
+
+#### Case: Props
+
+There is not a difference in props part, because we have to give the type of the properties in Vue components. However, in **setup function** we can give **props** as parameter. Thanks for that, we don't have to use **this**. In **toRefs(props)** method, we assign the props values into variables, so we can access properties from **setup function**. We could also access them by calling **props.sampleWords**.
+
+#### Case: Data
+
+All datas are instantiated inside **setup function** using
+
+```js
+let dataObject = refs(initialValue);
+```
+
+Difference in here that when we want to access the value of a data object, we have to write **dataObject.value** for setting and getting the value. I believe this could be change in future Vue releases because React with React Hooks already solved that extra code stuff. So there is a trade-off between **this**. and **.value** in traditional approach and **composition api** approach. I still prefer **Vue composition approach** because declaring data objects in a more classical Java way is better for me.
+
+**Warning:** Don't forget to access values of data objects by calling dataObject.value
+
+#### Case: Methods
+
+All methods are instantiated inside **setup function** using
+
+```js
+function func() {}
+```
+
+Those methods are can be called same with **Option API** from template tags. Also inside setup functions we don't have to use this for methods.
+
+#### Case: Watchers
+
+All **watchers** are instantiated inside **setup function** using
+
+```js
+watch(dataObject, (newValue) => (totalObject.value += newValue));
+```
+
+watch function helps us to watch for dataObject and any change happen in dataObject will trigger code inside the function.
+
+### Summary
+
+To sum, **Vue Options API** approach splits the code into parts, Vue **Composition API** packages the code into one function called setup. From my perspective, using Vue Composition API, the code feels like running line by line and the readability of the code is improving. There are also lots of advantages of Vue Composition API which I read on different posts but I did not mention those features on that post. If you want to dig deeper on this subject, I am sharing some of the resources I read below.
+
+[Github Repository](https://github.com/erdemgonul/vue-composition-demo?source=post_page-----6436b003624--------------------------------)
+
+### Suggested Posts
+
+[Introduction Vue3](https://v3.vuejs.org/guide/composition-api-introduction.html?source=post_page-----6436b003624--------------------------------)
+
+[Clean Scalable Forms With Vue Composition API](https://medium.com/js-dojo/clean-scalable-forms-with-vue-composition-api-6db03cccabde?source=post_page-----6436b003624--------------------------------)
+
+[Getting Started With Composition API](https://auth0.com/blog/getting-started-with-vue-3-composition-api/?source=post_page-----6436b003624--------------------------------)

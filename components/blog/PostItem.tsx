@@ -14,8 +14,9 @@ const PostItem = ({ post: { slug, thumbnailUrl, title, date } }: Props) => (
     <div className="relative w-full flex rounded-lg aspect-[4/5]">
       <Image
         alt={slug}
-        className="rounded-lg cover"
+        className="rounded-lg "
         fill
+        style={{ objectFit: "cover" }}
         src={thumbnailUrl}
         placeholder="empty"
       />
