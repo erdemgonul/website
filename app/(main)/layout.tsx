@@ -1,5 +1,5 @@
 import "styles/globals.scss";
-import { Open_Sans } from "next/font/google";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: {
@@ -11,16 +11,15 @@ export const metadata = {
   },
 };
 
-const openSans = Open_Sans({ subsets: ["latin"], display: "swap" });
-
-export default async function RootLayout({
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={openSans.className}>
-      <body>{children}</body>
-    </html>
+    <div className="bg-black">
+      <Navbar theme="dark" />
+      {children}
+    </div>
   );
 }

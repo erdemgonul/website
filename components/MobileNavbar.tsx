@@ -17,10 +17,10 @@ const MobileNavLink = ({ link, mobileName, active, newTab = false }) => (
     <Link
       href={link}
       className={classNames(
-        "tracking-04 font-light capitalize text-2xl text-color hover:border-primary hover:border-b-2 border-white",
+        "tracking-04 font-light capitalize text-2xl text-white hover:border-primary hover:border-b-2 border-white",
         {
           "text-primary border-primary border-b-2": active,
-          "text-color": !active,
+          "text-white": !active,
         }
       )}
       {...(newTab && {
@@ -44,7 +44,7 @@ export default function MobileNavbar() {
   return (
     <>
       <div className="h-[80px] px-4 flex md:hidden justify-between w-full items-center z-50">
-        <Link href="/" className="tracking-04 font-light text-xl text-color">
+        <Link href="/" className="tracking-04 font-light text-xl text-white">
           {"Erdem Gönül"}
         </Link>
         <div

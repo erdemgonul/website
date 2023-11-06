@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}", // <-- Add this line
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -10,7 +10,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#cca69a",
-        black: "#151515",
+        black: "#141414",
+        red: "#FF0046",
       },
     },
   },

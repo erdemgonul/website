@@ -1,0 +1,93 @@
+---
+title: "Passing Data over Custom Components with Vue3 Composition API"
+description: "While coding an address create component, I needed a form validation library and I decided to use the latest version of the vee-validate library. I made this component using Vue2 before"
+date: "2022-11-21T05:35:07.322Z"
+thumbnailUrl: "/passing.webp"
+category: "vue,frontend"
+---
+
+<Date text="21 September 2022" />
+<Title text="Passing Data over Custom Components with Vue3 Composition API" />
+
+<Image src="/passing.webp" alt="passing" />
+
+With the release of Vue3 and the Composition API, it has become much easier to create custom components and interact with their parents.
+
+Here I will show its new usage by making a simple component. Since I haven't been able to find much resources on Custom Components on Vue3 yet, I am sharing this article to find the most effective solution in my opinion.
+
+<Image src="/passing-1.gif" alt="passing-gif" />
+
+This component is a custom component that sends the changes on the price unit to the parent component via emit, while sending the price to the parent component through the v-model.
+
+```js
+<template>
+  <div>
+    <div>
+      <input
+        type="number"
+        v-model="val"
+      />
+      <div>
+        <select v-model="priceType">
+          <option value="USD">USD</option>
+          <option value="BTC">BTC</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { computed, ref, watch } from "vue";
+
+export default {
+  props: {
+    modelValue: Number,
+  },
+  setup(props, { emit }) {
+    const priceType = ref("USD");
+
+    watch(priceType, (value) => {
+      emit("priceTypeChanged", value);
+    });
+
+    const val = computed({
+      get: () => {
+        return props.modelValue;
+      },
+      set: (x) => {
+        emit("update:modelValue", x);
+      },
+    });
+
+    return {
+      priceType,
+      val,
+    };
+  },
+};
+</script>
+```
+
+As you can see the codes, the component contains an input element and a select element. By using Composition API, we enable the interaction of these elements with their parent component. At this point, you can find the article I wrote in detail about the computed, ref, watch and setup methods below.
+
+[Introduction To Vue Composition API](https://erdemgonul.com/blog/introduction-to-vue-composition-api)
+
+I’ve bound the input element to a ‘val’ variable using Vue’s core features, the v-model. The variable ‘val’ is a computed variable, it takes the value from the modelValue of the component with the get method, and in the set method, when the value is changed from inside the component, it performs this change and forwards it to the top.
+
+The ‘emit’ method is used when we want to trigger an event on the component. We are sending the change to the parent by stating that we have made a change with the update, which is one of the built-in emit methods, and that this change is on the ‘modelValue’. The parent catches this change and performs the necessary operations.
+
+In order to show watch and ref methods, we will add a second variable and use the select element, where the price unit can be selected.
+
+I created a ref (equal to data in vue2) object and defined its initial value as ‘USD’. Then, using the watch method, I performed the inside operation every time the ‘priceType’ field changed. Here, when there is a change on the ‘priceType’ by typing custom emit, we trigger this change to the parent component.
+
+The parent component catches these changes by saying @priceTypeChanged=”doSomething” and calls the doSomething method defined on it.
+
+```js
+<CustomComponent
+v-model="price"
+@priceTypeChanged="doSomething"
+/>
+```
+
+In this article, I tried to write a custom component using Vue3 Composition API and show the passing data with its parent using watch, computed, and emit events.

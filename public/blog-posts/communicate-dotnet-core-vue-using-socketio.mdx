@@ -1,0 +1,153 @@
+---
+title: "Communicate .Net Core & Vue.js Using Socket.io"
+description: "In systems where long processes are running in the back, there are situations where the user needs to be informed about the process on the front side due to user experience."
+date: "2021-06-19T05:35:07.322Z"
+thumbnailUrl: "/signal.webp"
+category: "vue,frontend,backend,socketio"
+---
+
+<Date text="19 June 2021" />
+<Title text="Communicate .Net Core & Vue.js Using Socket.io" />
+
+<Image src="/signal.webp" alt="signal-tower" />
+
+In systems where long processes are running in the back, there are situations where the user needs to be informed about the process on the front side due to user experience. For example, let’s consider the pipeline on Jenkins. There is a deploy process in the backend and the user needs to learn at what stage the process is, at which stage the error was received, or about how long the process is left to finish.
+
+<Image src="/communicate-1.webp" alt="communicate-1" />
+
+In order to create a user-friendly screen during such long-lasting and gradual processes, the user should be able to follow the process live without having to refresh the screen. In this article, I will explain how a multi-stage process running on .Net Core interacts with Socket.io on the Vue frontend.
+
+### Simple Socket.io Server
+
+Let's create an entry-level socket.io server that already has many examples on the internet. In order not to get a CORS error, let’s specify the port where our C# project will run and the port where the Vue project will run as in the example.
+
+We need a 3-layer structure for the information we want to send to the SocketIO server and from there to Vue via the backend. At this point, we need 2 emit events to provide transitions between them.
+
+We will use the information about the process we get from the “fromProcess” emit event and to send it to Vue, we will use the “toClient” emit event. These servers, the information to be sent by the .Net Core will be captured by the server and directed to the client.
+
+```js
+<script>
+const app = require("express")();
+var http = require("http").createServer(app);
+var socket = require("socket.io")(http, {
+  allowEIO3: true,
+  cors: {
+    origin: ['http://localhost:8080', 'http://localhost:8082'],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
+
+app.all("*", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  res.header("X-Powered-By", " 3.2.1");
+  res.header("Content-Type", "application/json;charset=utf-8");
+  next();
+});
+
+socket.on("connection", function (socket) {
+  console.log("The client has a connection");
+
+  socket.on("connect", () => {
+    console.log("Client begins to connect");
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnect");
+  });
+
+  socket.on("send", (data) => {
+    // When a data received from .Net Core, send that data into Vue
+    console.log("Receiving data sent by .Net Core", data);
+    socket.emit("receive",data);
+  });
+
+   socket.on("receive", (data) => {
+    console.log("Vue Received: ", data);
+  });
+});
+
+http.listen(3000, function () {
+  console.log("server runing at 127.0.0.1:3000");
+});
+view rawSocketIOServer.js hosted with ❤ by GitHub
+</script>
+```
+
+### Socket.IO C# Client
+
+Although Socket.IO does not have a C# Client officially supported, the Socket.IO-client for .NET project, which is a nice project on this subject, successfully meets this problem.
+
+In this article, I wrote a code that will send the process information to the SocketIO server every 2 seconds to keep the code phase as simple as possible. The first parameter of the “EmitAsync” method shows the name of the emit event and the second shows the data we will send.
+
+```csharp
+class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var processStages = new List<string> { "Starting","Preparing","Running","Testing","Cleaning","Deploying","Process Completed" };
+            foreach (var p in processStages)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(2));
+                SendProgress(p);
+            }
+        }
+
+        public static async void SendProgress(string progress)
+        {
+            var client = new SocketIO("http://localhost:3000/");
+            await client.ConnectAsync();
+            await client.EmitAsync("fromProcess", progress);
+            await client.DisconnectAsync();
+        }
+
+    }
+view rawSocketIOClientCSharp.cs hosted with ❤ by GitHub
+```
+
+### Vue SocketIO
+
+I preferred to use the VueSocketIOExtended project to enable interaction between Vue and SocketIO server. I will not talk about the installation phase because the documentation is very simple and beautiful.
+
+After creating a component, I specified the action to be done as a result of the connect emit event under the sockets field provided by this package and the action to be taken when the “toClient” emit event is received. Since the information from .Net Core reaches the SocketIO server and comes to the Vue Client under the name of “toClient” emit event, we do the operation we want to do under this method. Here, for the simplest example, I assigned the incoming data to a variable to print it on the screen.
+
+```csharp
+
+<template>
+  <div>
+    <h1>Current Progress: {{ progress }}</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "VueClient",
+  data: function () {
+    return {
+      progress: null,
+    };
+  },
+  sockets: {
+    connect() {
+      console.log("client connected to server");
+    },
+    toClient(data) {
+      console.log("Data received from .Net Core: ", data);
+      this.progress = data;
+    },
+  },
+};
+</script>
+view rawVueClientSocketIO.vue hosted with ❤ by GitHub
+```
+
+### Demo
+
+<Image src="/communicate-2.gif" alt="communicate-2" />
+
+As a result of this 3-layer structure, we have implemented the interaction between the backend and the frontend in the simplest way possible via web-sockets instead of providing http requests.
+
+Thank you for reading, I hope it was helpful.

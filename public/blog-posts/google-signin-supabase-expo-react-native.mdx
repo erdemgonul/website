@@ -1,0 +1,158 @@
+---
+title: "Google Sign In With Supabase + Expo React Native"
+description: "In this write-up, I'll walk you through how to set up authentication processes using Supabase Auth with Google Sign-In in Expo / React Native projects step by step."
+date: "2023-11-04T05:35:07.322Z"
+thumbnailUrl: "/sydney.webp"
+category: "react native,frontend,expo,supabase,authentication"
+---
+
+<Date text="4 November 2023" />
+<Title text="Google Sign In With Supabase + Expo React Native" />
+
+<Image src="/sydney.webp" alt="sydney" cover />
+
+## Overview
+
+In this write-up, I'll walk you through how to set up authentication processes using Supabase Auth with Google Sign-In in Expo / React Native projects step by step.
+
+Packages we'll use:
+
+- @supabase/supabase-js
+- expo
+- expo-dev-client
+- expo-secure-store
+- expo-web-browser
+- expo-linking
+- React Navigation packages
+
+Warning: Our reason for attempting to log in using OAuth is due to a bug between the "react-native-google-sign-in" package and Supabase. If this issue is resolved in the near future, our first preference should continue to be using native sign-ins.
+
+## Configuration
+
+Here are the parts that we'll be doing that can be used in all login methods. I will specify the sections to be done for each Expo Supabase auth integration in parentheses.
+
+### Initializing Supabase Client (All Login Providers)
+
+```typescript
+import "react-native-url-polyfill/auto";
+import * as SecureStore from "expo-secure-store";
+import { createClient } from "@supabase/supabase-js";
+
+const ExpoSecureStoreAdapter = {
+  getItem: (key: string) => {
+    return SecureStore.getItemAsync(key);
+  },
+  setItem: (key: string, value: string) => {
+    SecureStore.setItemAsync(key, value);
+  },
+  removeItem: (key: string) => {
+    SecureStore.deleteItemAsync(key);
+  },
+};
+
+const supabaseUrl = "YOUR_SUPABASE_URL";
+const supabaseAnonKey = "YOUR_SUPABASE_ANON_KEY";
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    storage: ExpoSecureStoreAdapter as any,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+  },
+});
+```
+
+### Add scheme for deeplinking
+
+To sign in with Google, after opening a pop-up browser, upon a successful or unsuccessful sign-in process, it is necessary to define a scheme in the app.json file to return to the app and send the data to the app.
+
+```
+{
+  "expo": {
+    .......
+    "scheme": "YOUR_PROJECT_NAME",
+    .......
+  }
+}
+```
+
+Afterwards, we need to provide the scheme we defined in the Supabase Dashboard/Authentication/URL Configuration section, both for the Site URL and Redirect URLs, in the format YOUR_PROJECT_NAME://google-auth.
+
+### Configuring Google OAuth ClientID (All Google Login Providers)
+
+This step is where our Supabase project is connected to Google. Since this part is already explained in detail on the internet, I won't go into specifics.
+
+You can follow this part on Supabase. All you need to do is proceed until you add the ClientID and Client Secret to Supabase.
+
+Link: https://supabase.com/docs/learn/auth-deep-dive/auth-google-oauth
+
+## Implementation of Google OAuth with Supabase In React Native
+
+We can now move on to writing code. We obtain a Google sign-in link using Supabase's signInWithOAuth method. Then, we open this link using Expo WebBrowser. After performing the login actions on the screen, we return the resulting data back to the project as a string. Next, we extract the access_token and refresh_token from the string and pass them to Supabase's setSession method, and thus, we have completed the login :)
+
+```typescript
+//Import supabaseClient
+import { supabase } from "@lib/supabase";
+
+const getQueryParams = (url: string) => {
+  const queryParams = {};
+  const [, queryString] = url.split("#");
+
+  if (queryString) {
+    const pairs = queryString.split("&");
+    pairs.forEach((pair) => {
+      const [key, value] = pair.split("=");
+      queryParams[key] = decodeURIComponent(value || "");
+    });
+  }
+
+  return queryParams;
+};
+
+const signInWithGoogleOAuth = async () => {
+  const res = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: "YOUR_SCHEME://google-auth",
+      queryParams: {
+        prompt: "consent",
+      },
+    },
+  });
+  const googleOAuthUrl = res?.data?.url;
+
+  if (googleOAuthUrl) {
+    const result = await WebBrowser.openAuthSessionAsync(
+      googleOAuthUrl,
+      "YOUR_SCHEME://google-auth",
+      {
+        showInRecents: true,
+      }
+    );
+
+    if (result?.type === "success") {
+      const params: any = getQueryParams(result.url);
+
+      const user = await supabase.auth.setSession({
+        access_token: params.access_token,
+        refresh_token: params.refresh_token,
+      });
+
+      return user;
+    }
+  }
+};
+```
+
+You can use this method to retrieve the real-time authentication state in Supabase. This should work when logging in with Google.
+
+```typescript
+supabase.auth.onAuthStateChange(async (_event, session) => {
+    console.log(_event, session);
+}));
+```
+
+**Note** : Since 2020, Apple has made it mandatory to implement the Sign In With Apple method when using Apple as a third-party auth provider. If you don't do this, your app won't be allowed on the App Store. Therefore, along with the current steps you're taking, you should also add Apple as a provider to Supabase and perform the necessary steps. I will publish an article about this and add it here.
+
+Thank you for reading. You can reach out to me at erdemgonuldev@gmail.com for help and support on any topic.

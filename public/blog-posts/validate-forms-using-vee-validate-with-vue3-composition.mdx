@@ -1,0 +1,148 @@
+---
+title: "Validate Forms using vee-validate with Vue3 Composition API"
+description: "While coding an address create component, I needed a form validation library and I decided to use the latest version of the vee-validate library. I made this component using Vue2 before"
+date: "2022-02-26T05:35:07.322Z"
+thumbnailUrl: "/mirage.webp"
+category: "vue,frontend"
+---
+
+<Date text="26 February 2022" />
+<Title text="Validate Forms using vee-validate with Vue3 Composition API" />
+
+<Image src="/mirage.webp" alt="mirage" />
+
+While coding an address create component, I needed a form validation library and I decided to use the latest version of the vee-validate library. I made this component using Vue2 before, so I knew what I needed to do and how. Since I wanted to write my code as reusable with custom components, I had to read a lot of documentation. In this article, I will share the specific problems I encountered and the solutions I developed step by step.
+Note: While writing this article, I tried to write as simple as possible in order not to include repetitive code and not to complicate the component. I think that with this article, you will be able to easily make a component like the one below.
+
+<Image src="/validate-forms-1.webp" alt="validate-forms-vue-1" />
+
+### Technologies:
+
+- Vue3
+- Composition Api
+- `js<script setup> syntax`
+- vee-validate v4 & yup validation library
+
+First of all, because I will use custom components, I proceeded through the 'composition api' section instead of 'components' section in the vee validate documentation.
+
+### FormText Component
+
+```js
+<template>
+   <input v-model="value" type="text" :name="name"/>
+   {{errorMessage}}
+</template>
+<script setup>
+import { defineProps } from "vue";
+import { useField } from "vee-validate";
+const props = defineProps({
+     name: { type: String, required: true },
+});
+const { value, errorMessage } = useField(props.name);
+</script>
+```
+
+If you noticed this component, it was written to be used in form validation, so there is no need to pass input's current values to parent component. Every change made on the input is automatically assigned to the form object that we will define on the parent. The useField hook here helps us to get and set the values ​​of the field we defined on the form by passing fields name.
+
+### AddressForm Component
+
+I prefer yup package to handling form validations with vee-validate. With yup, we can easily define nested form objects with cleaner structure. I will not go into the details of the yup, the documentation is written very well, you can read it here.
+
+There are two businesses on that component.
+
+#### First Case:
+
+- If address type is 'personal', user enters identityNumber,
+- else user enters companyName
+
+#### Second Case:
+
+- User selects country
+- Cities in selected country is fetched from backend
+- User selects city in selected country
+
+#### Solution Case 1:
+
+First case is easily solved with yup using 'when' method but I wasted so much time for handling second case. Remember I used lots of different approaches to handle those problems but using Vee Validate with Composition API was the best solution for me.
+
+#### Solution Case 2:
+
+- useForm hook used for creating form inside script setup.
+- Yup schema and initialValues was passed to useForm hook and setFieldValue and handleSubmit methods returned from that hook.
+- useFieldValue hook is used for getting current countryId
+- I used watch to handle countryId changes. When countryId is changed cities in selected country is fetched.
+- If country is changed after selecting a city, city field should set null. I used setFieldValue in here.
+
+```js
+<template>
+   <FormText name="address.addressTitle"/>
+   <FormSelect name="address.countryId" :items="countries"/>
+   <FormSelect name="address.cityId" :items="cities"/>
+   <FormRadioGroup
+    :items="ADDRESS_TYPES" name="address.addressType"/>
+   <FormText v-show="addressType === 'personal'" name="address.identityNumber" />
+   <FormText v-show="addressType === 'company'" name="address.companyName" />
+   <button @click="submit">Add Address</button>
+</template>
+<script setup>
+import * as yup from "yup";
+import { useForm, useFieldValue } from "vee-validate";
+import { reactive, onMounted, watch } from "vue";
+const schema = yup.object({
+ address: yup.object({
+   addressTitle: yup.string().required(),
+   countryId: yup.number().required(),
+   cityId: yup.number().required(),
+   addressType: yup.string().required(),
+   identityNumber: yup.string().when("addressType", {
+        is: 'personal',
+        then: yup.string().required(),
+        otherwise:yup.string()
+   }),
+   companyName: yup.string().when("addressType", {
+        is: 'company',
+        then: yup.string().required(),
+        otherwise:yup.string()}),
+   })
+});
+const { setFieldValue, handleSubmit } = useForm({
+   validationSchema: schema,
+   initialValues: {
+      address: { addressType: "personal" },
+   },
+});
+const countryId = useFieldValue("address.countryId");
+const addressType = useFieldValue("address.addressType");
+watch(() => countryId.value, (newValue) => {
+   if (newValue) {
+      await store.fetchCities(newValue);
+      cityId.value && setFieldValue("address.cityId", null);
+   }
+});
+const failValidation = ({ values, errors, results }) => {
+   console.log('fail');
+}
+const addAddress = handleSubmit((values) => {
+   //if validates, this code will work; else executes failValidation
+   console.log('validated',values);
+}, failValidation);
+
+</script>
+```
+
+You can also customize vee-validate errors using vue-i18n and yup.
+
+```js
+import { useI18n } from "vue-i18n";
+import * as yup from "yup";
+const { t } = useI18n();
+yup.setLocale({
+  mixed: {
+    required: t("required"),
+  },
+});
+```
+
+In this article, I showed you how to make a component form validation that is as simplified as possible but includes real-life business. The reason why I write these articles is to put the solutions I have found on the internet permanently when I cannot find direct solutions to the problems I encounter.
+
+Thank you for reading the article, I hope it was helpful. You can reach me quickly on any issue at **ahmeterdemgonul@gmail.com** or **@aherdemgonul** twitter account.
