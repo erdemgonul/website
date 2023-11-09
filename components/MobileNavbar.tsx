@@ -37,8 +37,6 @@ export default function MobileNavbar({ theme = "dark" }) {
   const [showModal, setShowModal] = useState(false);
   const currentRoute = usePathname();
 
-  console.log({ theme });
-
   useEffect(() => {
     showModal && setShowModal(false);
     //eslint-disable-next-line
@@ -49,7 +47,7 @@ export default function MobileNavbar({ theme = "dark" }) {
       <div className="px-4 flex md:hidden h-[80px] justify-between w-full items-center z-50">
         <Link
           href="/"
-          className={classNames("font-medium text-3xl text-white", {
+          className={classNames("font-medium text-3xl", {
             "text-black": theme === "light",
             "text-white": theme === "dark",
           })}
