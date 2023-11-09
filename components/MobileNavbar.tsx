@@ -47,7 +47,7 @@ export default function MobileNavbar({ theme = "dark" }) {
       <div className="px-4 flex md:hidden h-[80px] justify-between w-full items-center z-50">
         <Link
           href="/"
-          className={classNames("font-medium text-3xl", {
+          className={classNames("font-medium text-2xl", {
             "text-black": theme === "light",
             "text-white": theme === "dark",
           })}
