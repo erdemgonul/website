@@ -1,5 +1,5 @@
 import "styles/globals.scss";
-import { Open_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export const metadata = {
   },
 };
 
-const openSans = Open_Sans({ subsets: ["latin"], display: "swap" });
+const interTight = Inter({ subsets: ["latin"], display: "swap" });
 
 export default async function RootLayout({
   children,
@@ -20,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={openSans.className}>
+    <html lang="en" className={interTight.className}>
       <body>
         {children}
         <Analytics />

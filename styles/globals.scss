@@ -18,7 +18,6 @@
   right: 0px;
   width: 0px;
   height: 0px;
-  @apply bg-black;
   z-index: 40;
   transition: 1s;
   overflow: hidden;
@@ -60,7 +59,7 @@ a {
 }
 
 .slogan {
-  @apply md:mx-0 font-bold text-7xl tracking-tighter text-white leading-[1];
+  @apply md:mx-0 font-bold text-5xl md:text-7xl text-white leading-[1];
 
   &:hover {
     .keyword {
@@ -71,7 +70,7 @@ a {
 }
 
 .sub-slogan {
-  @apply md:mx-0 font-bold text-7xl tracking-tighter text-red leading-[1] red-animation;
+  @apply md:mx-0 font-bold text-5xl md:text-7xl text-red leading-[1] red-animation;
 
   &:hover {
     .keyword {

@@ -17,7 +17,7 @@ export default async function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-black">
+    <div className="bg-black flex flex-col min-h-[100vh]">
       <Navbar theme="dark" />
       {children}
     </div>

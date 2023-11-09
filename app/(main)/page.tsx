@@ -6,8 +6,8 @@ export const metadata = {
 
 export default async function Home() {
   return (
-    <div className="bg-black mx-auto w-full h-[calc(100vh_-_132px)] items-end flex">
-      <div className="max-w-screen-lg md:flex md:flex-col bottom-0 mb-20 mx-20">
+    <div className="bg-black mx-auto w-full h-full grow items-end flex">
+      <div className="md:max-w-screen-lg flex flex-col mb-20 mx-8 md:mb-20 md:mx-20">
         <div className="flex flex-col w-fit">
           <h1 className="slogan">Erdem Gönül</h1>
           <h2 className="sub-slogan">Frontend Developer</h2>

@@ -42,7 +42,7 @@ const NavLink = ({ link, name, active, theme }) => (
         "font-semibold uppercase tracking-widest whitespace-nowrap text-base self-center flex link-border link link-animation",
         {
           "text-black": theme === "light",
-          "text-white": theme === "dark",
+          "text-[#bfbfbf]": theme === "dark",
           "!text-red border-b border-red px-2": active,
         }
       )}
@@ -57,12 +57,12 @@ export default function Navbar({ theme = "dark" }) {
 
   return (
     <nav
-      className={classNames("flex w-full py-12", {
+      className={classNames("flex w-full md:py-12", {
         "bg-white": theme === "light",
         "bg-black": theme === "dark",
       })}
     >
-      <div className="flex mx-auto  items-center justify-between  w-full md:max-w-screen-xl">
+      <div className="hidden md:flex mx-auto  items-center justify-between  w-full md:max-w-screen-xl">
         <Link
           href={"/"}
           aria-label="homepage"
@@ -70,7 +70,7 @@ export default function Navbar({ theme = "dark" }) {
             "text-xl font-medium w-fit whitespace-nowrap items-center",
             {
               "text-black": theme === "light",
-              "text-white": theme === "dark",
+              "text-[#bfbfbf]": theme === "dark",
             }
           )}
         >
@@ -107,7 +107,7 @@ export default function Navbar({ theme = "dark" }) {
           ))}
         </div>
       </div>
-      <MobileNavbar />
+      <MobileNavbar theme={theme} />
     </nav>
   );
 }

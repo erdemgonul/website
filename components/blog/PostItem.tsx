@@ -22,14 +22,14 @@ const PostItem = ({ post: { slug, thumbnailUrl, title, date } }: Props) => (
       />
     </div>
     <div className="flex flex-col mt-4">
-      <h4 className="text-lg font-semibold text-gray-400 group-hover:text-white">
+      <h4 className="text-lg font-semibold text-gray-400 group-hover:text-[#bfbfbf]">
         {new Date(date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         })}
       </h4>
-      <h4 className="mt-2 text-3xl font-semibold text-black group-hover:text-white">
+      <h4 className="mt-2 text-3xl font-semibold text-black group-hover:text-[#bfbfbf]">
         {title}
       </h4>
     </div>

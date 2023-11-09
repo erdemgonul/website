@@ -14,12 +14,12 @@ export default async function BlogPost({ params: { slug } }) {
     <main className="mx-4 md:mx-auto pt-8 pb-16 bg-white prose prose-lg">
       <Link
         href="/blog"
-        className="flex items-center gap-x-2 text-base no-underline font-semibold"
+        className="flex items-center gap-x-2 text-base no-underline font-bold md:font-semibold"
       >
         <BackIcon className="transform rotate-90" />
         Back to Posts
       </Link>
-      <div className="mt-32 prose prose-lg mx-auto prose-p:font-normal prose-p:text-gray-800">
+      <div className="mt-8 md:mt-16 prose prose-lg mx-auto prose-p:font-normal prose-p:text-gray-800">
         {/* @ts-expect-error Server Component */}
         <MDXRemote
           source={mdxSource}

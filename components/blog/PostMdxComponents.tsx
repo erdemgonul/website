@@ -16,25 +16,29 @@ export const PostMdxComponents = {
     </div>
   ),
   Title: (props: any) => (
-    <h1 className="text-black !mb-4 md:!mb-6 text-[44px] leading-[1.1] font-normal md:text-6xl md:font-extrabold">
+    <h1 className="text-black !mb-4 md:!mb-6 text-[44px] leading-[1.1] md:text-6xl font-extrabold">
       {props.text}
     </h1>
   ),
   Date: (props: any) => (
-    <h5 className="text-slate-500 font-medium text-sm tracking-widest mb-6">
+    <h5 className="text-slate-300  font-semibold md:font-medium text-lg md:text-sm tracking-widest mb-6">
       {props.text}
     </h5>
   ),
   Subtitle: (props: any) => (
-    <h4 className="font-light text-zinc-500 !mb-0 !mt-0 md:text-2xl">
+    <h4 className="font-medium text-zinc-500 !mb-0 !mt-0 md:text-2xl">
       {props.text}
     </h4>
   ),
   Subheader: (props: any) => (
-    <h4 className="font-semibold text-black !my-12 !text-xl">{props.text}</h4>
+    <h4 className="font-semibold text-black md:!my-12 !text-xl">
+      {props.text}
+    </h4>
   ),
   SubSubheader: (props: any) => (
-    <h5 className="font-semibold text-black !my-12 !text-lg">{props.text}</h5>
+    <h5 className="font-semibold text-black md:!my-12 !text-lg">
+      {props.text}
+    </h5>
   ),
   Quote: (props: any) => (
     <h5 className="ml-2 md:ml-4 border-l border-gray-400 py-1 md:py-3 px-4 text-slate-500 font-light text-base tracking-widest mb-6">

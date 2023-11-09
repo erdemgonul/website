@@ -24,7 +24,7 @@ const SOCIAL_LINKS = [
 ];
 const ContactSection = () => (
   <div className="mx-auto flex flex-col h-full justify-center items-center">
-    <h3 className="md:items-start justify-center flex flex-wrap text-white text-xl leading-[1.5] font-normal hover:text-red">
+    <h3 className="md:items-start justify-center flex flex-wrap text-[#bfbfbf] text-lg font-normal hover:text-red">
       Contact me from
       <span className="ml-2 underline underline-offset-8">
         ahmeterdemgonul@gmail.com

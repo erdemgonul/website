@@ -17,7 +17,7 @@ export default async function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white">
+    <div className="bg-white flex flex-col min-h-[100vh]">
       <Navbar theme="light" />
       {children}
     </div>

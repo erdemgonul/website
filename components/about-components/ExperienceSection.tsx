@@ -23,30 +23,30 @@ const EXPERIENCES_LIST = [
 
 const ExperienceItem = ({ companyName, role, year, desc }) => (
   <li>
-    <div className="flex items-center gap-x-4">
+    <div className="flex items-center gap-x-2">
       <span className="w-2 h-2 rounded-full bg-red"></span>
       <div className="flex items-center w-full">
-        <h3 className="text-xl text-white">{companyName}</h3>
-        <h3 className="text-lg font-normal text-gray-400 ml-2">
-          {role} <span className="hidden md:inline">{year}</span>
+        <h3 className="text-xl text-[#bfbfbf] font-medium">{companyName}</h3>
+        <h3 className="text-lg font-medium text-gray-500 ml-2">
+          {"|"} {role} <span className="hidden md:inline">{year}</span>
         </h3>
       </div>
     </div>
-    <p className="text-gray-300 text-lg font-normal mt-4">{desc}</p>
+    <p className="text-[#bfbfbf] text-base font-normal mt-4">{desc}</p>
   </li>
 );
 
 const ExperienceSection = () => (
   <section>
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col mx-auto w-full">
       <div className="flex flex-col justify-center">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-white text-2xl font-normal">Experience</h2>
+          <h2 className="text-[#bfbfbf] text-3xl font-medium">Experience</h2>
           <a
             href="https://www.linkedin.com/in/erdem-g%C3%B6n%C3%BCl-38a321179/"
             target="_blank"
             rel="noreferrer"
-            className="text-white text-xl"
+            className="text-[#bfbfbf] text-xl"
             aria-label="linkedin-link"
           >
             <Linkedin
