@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Modal from "./Modal";
 import { PostMdxComponents } from "./PostMdxComponents";
+import Image from "next/image";
 
 export default function Projects({ projects }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,12 +31,54 @@ export default function Projects({ projects }) {
                 />
               </div>
             );
+          } else if (props.appstoreLink || props.playstoreLink) {
+            return (
+              <div
+                className="flex flex-col text-[#bfbfbf]  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer group"
+                key={i}
+              >
+                <MDXRemote
+                  {...props.mdxSource}
+                  components={PostMdxComponents}
+                />
+                <div className="flex items-center mt-2">
+                  {props.appstoreLink && (
+                    <Link
+                      href={props.appstoreLink}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src="/appstore-badge.png"
+                        width={120}
+                        height={40}
+                        alt="appstore-badge"
+                      />
+                    </Link>
+                  )}
+                  {props.playstoreLink && (
+                    <Link
+                      href={props.playstoreLink}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src="/googleplay-badge.png"
+                        width={140}
+                        height={40}
+                        alt="playstore-badge"
+                      />
+                    </Link>
+                  )}
+                </div>
+              </div>
+            );
           } else {
             return (
               <Link
                 className="flex flex-col text-[#bfbfbf]  text-xs md:text-sm font-normal md:font-bold justify-center cursor-pointer group"
                 key={i}
-                href={props.link}
+                href={props.link || ""}
                 target="_blank"
                 rel="noreferrer"
               >

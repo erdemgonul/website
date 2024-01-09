@@ -7,7 +7,7 @@ export const metadata = {
     template: "%s | Erdem Gönül",
   },
   icons: {
-    icon: "./favicon.ico",
+    icon: "../favicon.ico",
   },
 };
 

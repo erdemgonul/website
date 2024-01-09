@@ -32,6 +32,8 @@ export default async function BlogPost({ params: { slug } }) {
 
 export const generateStaticParams = async () => {
   const { paths } = generateDynamicBlogPosts();
+  console.log(paths);
+
   return paths;
 };
 
