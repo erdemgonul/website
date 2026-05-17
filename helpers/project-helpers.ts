@@ -1,7 +1,6 @@
 import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
-import { serialize } from "next-mdx-remote/serialize";
 
 const projectsPath = (_path?: string) =>
   path.join(process.cwd(), "public", "projects", _path || "");
@@ -12,11 +11,10 @@ const parseProjectMdx = async (fileName: string) => {
     content,
     data: { image, link, mobile, appstoreLink, playstoreLink },
   } = matter(markdownWithMeta);
-  const mdxSource = await serialize(content);
 
   return {
     props: {
-      mdxSource,
+      content,
       image,
       link,
       appstoreLink,

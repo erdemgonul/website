@@ -9,8 +9,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { appId: string } }) {
-  const policy = policies.find((p) => p.appId === params.appId);
+export async function generateMetadata({ params }: { params: Promise<{ appId: string }> }) {
+  const { appId } = await params;
+  const policy = policies.find((p) => p.appId === appId);
   if (!policy) return { title: "Privacy Policy Not Found" };
 
   return {
@@ -19,8 +20,9 @@ export async function generateMetadata({ params }: { params: { appId: string } }
   };
 }
 
-export default function PrivacyPolicyRoute({ params }: { params: { appId: string } }) {
-  const policy = policies.find((p) => p.appId === params.appId) as PrivacyPolicy | undefined;
+export default async function PrivacyPolicyRoute({ params }: { params: Promise<{ appId: string }> }) {
+  const { appId } = await params;
+  const policy = policies.find((p) => p.appId === appId) as PrivacyPolicy | undefined;
 
   if (!policy) {
     notFound();

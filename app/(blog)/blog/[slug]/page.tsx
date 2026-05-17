@@ -7,7 +7,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import BackIcon from "public/svg/back.svg";
 
-export default async function BlogPost({ params: { slug } }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const { mdxSource } = await getBlogPostContent(slug);
 
   return (
@@ -20,7 +21,6 @@ export default async function BlogPost({ params: { slug } }) {
         Back to Posts
       </Link>
       <div className="mt-8 md:mt-16 prose prose-lg mx-auto prose-p:font-normal prose-p:text-gray-800">
-        {/* @ts-expect-error Server Component */}
         <MDXRemote
           source={mdxSource}
           components={{ ...PostMdxComponents, ...{} }}
@@ -37,7 +37,8 @@ export const generateStaticParams = async () => {
   return paths;
 };
 
-export const generateMetadata = async ({ params: { slug } }) => {
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params;
   const { frontMatter } = await getBlogPostContent(slug);
 
   return {

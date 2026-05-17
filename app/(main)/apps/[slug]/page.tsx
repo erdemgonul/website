@@ -6,8 +6,9 @@ export async function generateStaticParams() {
   return getAllAppSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const app = getAppBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const app = getAppBySlug(slug);
   if (!app) return { title: "App Not Found" };
 
   return {
@@ -16,8 +17,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function AppRoute({ params }: { params: { slug: string } }) {
-  const app = getAppBySlug(params.slug);
+export default async function AppRoute({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const app = getAppBySlug(slug);
 
   if (!app) {
     notFound();
