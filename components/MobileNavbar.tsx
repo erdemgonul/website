@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const NAVBAR_LINKS = [
   { link: "/", name: "Home" },
   { link: "/blog", name: "Blog" },
+  { link: "/apps", name: "Apps" },
   { link: "/projects", name: "Projects" },
   { link: "/about", name: "About" },
 ];

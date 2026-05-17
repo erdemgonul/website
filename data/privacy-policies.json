@@ -1,0 +1,164 @@
+[
+  {
+    "appId": "com.erdemgonul.swipeandlearn",
+    "appName": "Swipe Learn: Trivia & Facts",
+    "slug": "swipe-learn",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2025-08-03",
+    "type": "Freemium",
+    "collectsLocation": false,
+    "collectsPersonalInfo": false,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      },
+      {
+        "name": "RevenueCat",
+        "url": "https://www.revenuecat.com/privacy"
+      }
+    ],
+    "customSections": []
+  },
+  {
+    "appId": "com.erdemgonul.questique",
+    "appName": "Questique: Icebreaker Game",
+    "slug": "questique",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2025-01-01",
+    "type": "Freemium",
+    "collectsLocation": false,
+    "collectsPersonalInfo": false,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      },
+      {
+        "name": "RevenueCat",
+        "url": "https://www.revenuecat.com/privacy"
+      }
+    ],
+    "customSections": []
+  },
+  {
+    "appId": "com.erdemgonul.friendreminder",
+    "appName": "Friend Reminder: Stay in Touch",
+    "slug": "friend-reminder",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2025-01-01",
+    "type": "Freemium",
+    "collectsLocation": false,
+    "collectsPersonalInfo": true,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      },
+      {
+        "name": "RevenueCat",
+        "url": "https://www.revenuecat.com/privacy"
+      }
+    ],
+    "customSections": [
+      {
+        "title": "Contacts Access",
+        "content": "The Application requests access to your contacts to help you remember and stay in touch with your friends. Contact data is stored locally on your device and is not transmitted to external servers. You can revoke contacts access at any time through your device settings."
+      }
+    ]
+  },
+  {
+    "appId": "com.erdemgonul.whereis",
+    "appName": "WhereIs: Smart Home Inventory",
+    "slug": "whereis",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2025-01-01",
+    "type": "Freemium",
+    "collectsLocation": false,
+    "collectsPersonalInfo": false,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      },
+      {
+        "name": "RevenueCat",
+        "url": "https://www.revenuecat.com/privacy"
+      }
+    ],
+    "customSections": [
+      {
+        "title": "Photo Recognition",
+        "content": "The Application uses AI-powered photo recognition to help you catalog and organize your home inventory. Photos are processed on your device and may be synced via iCloud if you have enabled iCloud synchronization. No photos are transmitted to third-party servers beyond what is required for the AI recognition feature."
+      },
+      {
+        "title": "iCloud Sync",
+        "content": "If you choose to enable iCloud synchronization, your inventory data will be stored in your personal iCloud account. Apple's iCloud privacy policy applies to this data. You can disable iCloud sync at any time within the Application settings."
+      }
+    ]
+  },
+  {
+    "appId": "com.erdemgonul.whyexcited",
+    "appName": "WhyExcited",
+    "slug": "whyexcited",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2025-01-01",
+    "type": "Free",
+    "collectsLocation": false,
+    "collectsPersonalInfo": false,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      }
+    ],
+    "customSections": []
+  },
+  {
+    "appId": "com.erdemgonul.gascalculator",
+    "appName": "Gas Calculator",
+    "slug": "gas-calculator",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2025-01-01",
+    "type": "Free",
+    "collectsLocation": false,
+    "collectsPersonalInfo": false,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      }
+    ],
+    "customSections": []
+  }
+]

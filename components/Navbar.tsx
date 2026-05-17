@@ -11,6 +11,7 @@ import Medium from "public/svg/medium.svg";
 
 const NAVBAR_LINKS = [
   { link: "/blog", name: "Blog" },
+  { link: "/apps", name: "Apps" },
   { link: "/projects", name: "Projects" },
   { link: "/about", name: "About" },
 ];
