@@ -140,6 +140,49 @@
     "customSections": []
   },
   {
+    "appId": "com.erdemgonul.differentme",
+    "appName": "DifferentMe: AI Photo Styles",
+    "slug": "differentme",
+    "author": "Ahmet Erdem Gonul",
+    "email": "ahmeterdemgonul@gmail.com",
+    "effectiveDate": "2026-05-22",
+    "type": "Freemium",
+    "collectsLocation": false,
+    "collectsPersonalInfo": true,
+    "thirdParties": [
+      {
+        "name": "Google Analytics for Firebase",
+        "url": "https://firebase.google.com/support/privacy"
+      },
+      {
+        "name": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/support/privacy/"
+      },
+      {
+        "name": "RevenueCat",
+        "url": "https://www.revenuecat.com/privacy"
+      },
+      {
+        "name": "fal.ai",
+        "url": "https://fal.ai/privacy"
+      }
+    ],
+    "customSections": [
+      {
+        "title": "Photo Processing",
+        "content": "The Application allows you to take or upload photos of yourself to generate AI-powered style variations. Your photos are securely transmitted to fal.ai's servers solely for the purpose of generating the styled images. Photos are not stored permanently on our servers and are not used for any purpose other than generating the requested style variations. You can revoke camera and photo library access at any time through your device settings."
+      },
+      {
+        "title": "Credits and Purchases",
+        "content": "The Application uses a credit system to manage image generation requests. Credit balances are stored server-side via Firebase to prevent abuse. In-app purchases for credit packs are processed by Apple and managed via RevenueCat. We do not store payment information; all transactions are handled by Apple's App Store."
+      },
+      {
+        "title": "Anonymous Authentication",
+        "content": "The Application uses Firebase Anonymous Authentication to associate your credit balance and usage with your device without requiring you to create an account or provide any personal information such as your name or email address."
+      }
+    ]
+  },
+  {
     "appId": "com.erdemgonul.gascalculator",
     "appName": "Gas Calculator",
     "slug": "gas-calculator",
